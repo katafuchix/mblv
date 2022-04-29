@@ -1,0 +1,73 @@
+■SNS側からみてポイントが違う人たち（ID）
+select t1.user_id,t1.user_mailaddress,t1.user_status,t1.user_point,t2.user_id,t2.user_mailaddress,t2.user_status,t2.user_point from napatownsns.user t1,napatownec.user t2 where t1.user_id = t2.snsv_user_id and t1.user_point <> t2.user_point;
++---------+----------------------------------------------+-------------+------------+---------+----------------------------------------------+-------------+------------+
+| user_id | user_mailaddress                             | user_status | user_point | user_id | user_mailaddress                             | user_status | user_point |
++---------+----------------------------------------------+-------------+------------+---------+----------------------------------------------+-------------+------------+
+|    1951 | linkinpark-sutekiyan@ezweb.ne.jp             |           3 |        200 |      10 | linkinpark-sutekiyan@ezweb.ne.jp             |           1 |        130 |
+|    1957 | love.is.dead.sea.man.@ezweb.ne.jp            |           2 |        200 |      17 | love.is.dead.sea.man.@ezweb.ne.jp            |           1 |        130 |
+|    1959 | c.c_s0da_p0p@ezweb.ne.jp                     |           2 |        200 |      19 | c.c_s0da_p0p@ezweb.ne.jp                     |           1 |        190 |
+|    1972 | cos_no_seichi@docomo.ne.jp                   |           2 |        200 |      32 | cos_no_seichi@docomo.ne.jp                   |           1 |         55 |
+|    1974 | nikuya.1229.001.sakama.002@ezweb.ne.jp       |           2 |          0 |      34 | nikuya.1229.001.sakama.002@ezweb.ne.jp       |           1 |        545 |
+|    1976 | lovebabyathuki.atostom-obata@docomo.ne.jp    |           2 |         95 |      35 | lovebabyathuki.atostom-obata@docomo.ne.jp    |           1 |        250 |
+|    1982 | 0nn61c0r3255j5n@ezweb.ne.jp                  |           1 |          0 |      40 | 0nn61c0r3255j5n@ezweb.ne.jp                  |           1 |        180 |
+|    2012 | v1su-glayla-suke...@ezweb.ne.jp              |           2 |         35 |      70 | v1su-glayla-suke...@ezweb.ne.jp              |           1 |       1480 |
+|    2017 | mk-lovekyu-ko@ezweb.ne.jp                    |           2 |         10 |      75 | mk-lovekyu-ko@ezweb.ne.jp                    |           1 |       5860 |
+|    2040 | tt-onn_tnirrz.553344482@ezweb.ne.jp          |           4 |         80 |      97 | tt-onn_tnirrz.553344482@ezweb.ne.jp          |           1 |        200 |
+|    2050 | a-13.....h-6.02-27@docomo.ne.jp              |           1 |          0 |     106 | a-13.....h-6.02-27@docomo.ne.jp              |           1 |        150 |
+|    2057 | yumemushi-ama@ezweb.ne.jp                    |           3 |        150 |     112 | yumemushi-ama@ezweb.ne.jp                    |           1 |        160 |
+|    2066 | hh0609.lv0810.sk0912@docomo.ne.jp            |           2 |        170 |     120 | hh0609.lv0810.sk0912@docomo.ne.jp            |           1 |         80 |
+|    2069 | pink_pearl_1991.7.28@docomo.ne.jp            |           1 |          0 |     123 | pink_pearl_1991.7.28@docomo.ne.jp            |           1 |        190 |
+|    2074 | han-ta.k_sa.k_ikove@ezweb.ne.jp              |           1 |          0 |     128 | han-ta.k_sa.k_ikove@ezweb.ne.jp              |           1 |        190 |
+|    2090 | M.D1970.124.MiYUKi-MiYUKi-D.M@softbank.ne.jp |           1 |          0 |     142 | M.D1970.124.MiYUKi-MiYUKi-D.M@softbank.ne.jp |           1 |        200 |
+|    2111 | em-1202.happy-magic@softbank.ne.jp           |           2 |        200 |     162 | em-1202.happy-magic@softbank.ne.jp           |           1 |        145 |
+|    2179 | m11-t3-k2jack@ezweb.ne.jp                    |           3 |        180 |     220 | m11-t3-k2jack@ezweb.ne.jp                    |           1 |        330 |
+|    2194 | x.believe-blue@ezweb.ne.jp                   |           2 |        200 |     233 | x.believe-blue@ezweb.ne.jp                   |           1 |        140 |
+|    2238 | ant3-8.11-ant3@ezweb.ne.jp                   |           3 |        200 |     276 | ant3-8.11-ant3@ezweb.ne.jp                   |           1 |        185 |
+|    2283 | 9j2pdtjmw@ezweb.ne.jp                        |           2 |        200 |     317 | 9j2pdtjmw@ezweb.ne.jp                        |           1 |          0 |
+|    2291 | gat-x1022.bluduel@softbank.ne.jp             |           2 |        200 |     320 | gat-x1022.bluduel@softbank.ne.jp             |           1 |        190 |
++---------+----------------------------------------------+-------------+------------+---------+----------------------------------------------+-------------+------------+
+22 rows in set (0.00 sec)
+
+■SNS側からみてポイントが違う人たち（メールアドレス）
+select t1.user_id,t1.user_mailaddress,t1.user_status,t1.user_point,t2.user_id,t2.user_mailaddress,t2.user_status,t2.user_point from napatownsns.user t1,napatownec.user t2 where t1.user_mailaddress = t2.user_mailaddress and t1.user_point <> t2.user_point;
++---------+----------------------------------------------+-------------+------------+---------+----------------------------------------------+-------------+------------+
+| user_id | user_mailaddress                             | user_status | user_point | user_id | user_mailaddress                             | user_status | user_point |
++---------+----------------------------------------------+-------------+------------+---------+----------------------------------------------+-------------+------------+
+|    1951 | linkinpark-sutekiyan@ezweb.ne.jp             |           3 |        200 |      10 | linkinpark-sutekiyan@ezweb.ne.jp             |           1 |        130 |
+|    1743 | mazda@technovarth.jp                         |           2 |        730 |      12 | mazda@technovarth.jp                         |           2 |       8400 |
+|    1957 | love.is.dead.sea.man.@ezweb.ne.jp            |           2 |        200 |      17 | love.is.dead.sea.man.@ezweb.ne.jp            |           1 |        130 |
+|    1959 | c.c_s0da_p0p@ezweb.ne.jp                     |           2 |        200 |      19 | c.c_s0da_p0p@ezweb.ne.jp                     |           1 |        190 |
+|    1972 | cos_no_seichi@docomo.ne.jp                   |           2 |        200 |      32 | cos_no_seichi@docomo.ne.jp                   |           1 |         55 |
+|    1974 | nikuya.1229.001.sakama.002@ezweb.ne.jp       |           2 |          0 |      34 | nikuya.1229.001.sakama.002@ezweb.ne.jp       |           1 |        545 |
+|    1976 | lovebabyathuki.atostom-obata@docomo.ne.jp    |           2 |         95 |      35 | lovebabyathuki.atostom-obata@docomo.ne.jp    |           1 |        250 |
+|    1982 | 0nn61c0r3255j5n@ezweb.ne.jp                  |           1 |          0 |      40 | 0nn61c0r3255j5n@ezweb.ne.jp                  |           1 |        180 |
+|    2012 | v1su-glayla-suke...@ezweb.ne.jp              |           2 |         35 |      70 | v1su-glayla-suke...@ezweb.ne.jp              |           1 |       1480 |
+|    2017 | mk-lovekyu-ko@ezweb.ne.jp                    |           2 |         10 |      75 | mk-lovekyu-ko@ezweb.ne.jp                    |           1 |       5860 |
+|    2040 | tt-onn_tnirrz.553344482@ezweb.ne.jp          |           4 |         80 |      97 | tt-onn_tnirrz.553344482@ezweb.ne.jp          |           1 |        200 |
+|    2050 | a-13.....h-6.02-27@docomo.ne.jp              |           1 |          0 |     106 | a-13.....h-6.02-27@docomo.ne.jp              |           1 |        150 |
+|    2057 | yumemushi-ama@ezweb.ne.jp                    |           3 |        150 |     112 | yumemushi-ama@ezweb.ne.jp                    |           1 |        160 |
+|    2066 | hh0609.lv0810.sk0912@docomo.ne.jp            |           2 |        170 |     120 | hh0609.lv0810.sk0912@docomo.ne.jp            |           1 |         80 |
+|    2069 | pink_pearl_1991.7.28@docomo.ne.jp            |           1 |          0 |     123 | pink_pearl_1991.7.28@docomo.ne.jp            |           1 |        190 |
+|    2074 | han-ta.k_sa.k_ikove@ezweb.ne.jp              |           1 |          0 |     128 | han-ta.k_sa.k_ikove@ezweb.ne.jp              |           1 |        190 |
+|    2090 | M.D1970.124.MiYUKi-MiYUKi-D.M@softbank.ne.jp |           1 |          0 |     142 | M.D1970.124.MiYUKi-MiYUKi-D.M@softbank.ne.jp |           1 |        200 |
+|    2111 | em-1202.happy-magic@softbank.ne.jp           |           2 |        200 |     162 | em-1202.happy-magic@softbank.ne.jp           |           1 |        145 |
+|    2431 | tvw61sh@ezweb.ne.jp                          |           2 |        200 |     215 | tvw61sh@ezweb.ne.jp                          |           2 |      99600 |
+|    2179 | m11-t3-k2jack@ezweb.ne.jp                    |           3 |        180 |     220 | m11-t3-k2jack@ezweb.ne.jp                    |           1 |        330 |
+|    2194 | x.believe-blue@ezweb.ne.jp                   |           2 |        200 |     233 | x.believe-blue@ezweb.ne.jp                   |           1 |        140 |
+|    2238 | ant3-8.11-ant3@ezweb.ne.jp                   |           3 |        200 |     276 | ant3-8.11-ant3@ezweb.ne.jp                   |           1 |        185 |
+|    2283 | 9j2pdtjmw@ezweb.ne.jp                        |           2 |        200 |     317 | 9j2pdtjmw@ezweb.ne.jp                        |           1 |          0 |
+|    2291 | gat-x1022.bluduel@softbank.ne.jp             |           2 |        200 |     320 | gat-x1022.bluduel@softbank.ne.jp             |           1 |        190 |
++---------+----------------------------------------------+-------------+------------+---------+----------------------------------------------+-------------+------------+
+24 rows in set (0.01 sec)
+
+■SPGV側からみてポイントが違う人たち（ID）
+select t1.user_id,t1.user_mailaddress,t1.user_status,t1.user_point,t2.user_id,t2.user_mailaddress,t2.user_status,t2.user_point from napatownsns.user t1,napatownec.user t2 where t2.user_id = t1.spgv_user_id and t1.user_point <> t2.user_point;
+407 rows in set (0.01 sec)
+
+■SNSV側でメールアドレスが重複している人たち
+select t1.user_id,t1.user_mailaddress,t1.user_status,t1.user_point,t2.user_id,t2.user_mailaddress,t2.user_status,t2.user_point from napatownsns.user t1,napatownsns.user t2 where t1.user_id <> t2.user_id and t1.user_mailaddress = t2.user_mailaddress\G
+empty
+
+■SPGV側でメールアドレスが重複している人たち
+select t1.user_id,t1.user_mailaddress,t1.user_status,t1.user_point,t2.user_id,t2.user_mailaddress,t2.user_status,t2.user_point from napatownec.user t1,napatownec.user t2 where t1.user_id <> t2.user_id and t1.user_mailaddress = t2.user_mailaddress\G
+empty

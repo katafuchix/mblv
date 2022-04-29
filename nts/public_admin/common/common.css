@@ -1,0 +1,384 @@
+@charset "Shift_JIS";
+
+/*
+------------------------------------------------------------------------------
+フォント設定
+初期化設定/汎用的な設定
+#gnavi(.gnavi)設定
+#tnavi(.tnavi)設定
+テーブル設定
+マージン & パディング
+Utility
+透明度設定 
+アイコン設定
+アイコン(Arrrow)
+nicetitle
+niceimg
+ポップアップ後[画像]
+prototype作成時コメント用
+タイムカウンター
+RSS取得表示欄
+------------------------------------------------------------------------------
+*/
+
+/*  フォント設定
+-------------------------------------------------------------------------------------------------------*/
+.blue{color : #3F83B1;}
+.green{color : #1A9239;}
+.orange{color: #F7521D;}
+.red,
+.err,
+.error{color : #DB1A0B;}
+.s-red{font-weight:bolder;color:#DB1A0B;}
+
+.font13{font-size:13px;}
+.font14{font-size:14px;}
+.font15{font-size:15px;}
+
+
+/*  初期化設定/汎用的な設定
+------------------------------------------------------------------------------------------------------*/
+#container,.container
+	{text-align:left;}
+#bg
+	{margin-left:auto;margin-right:auto;}
+table,img,html,body,form
+	{margin: 0; padding: 0;}
+h1,h2,h3,h4,h5,h6
+	{margin:0px;padding:0px;font-size:16px;}
+a img
+	{border:none;}
+/*img
+	{background:#eee;}*/
+#header,#footer
+	{clear:both;}
+form img,form input,form select
+	{vertical-align: middle;}
+form input,form select
+	{line-height: 1;}
+input
+	{margin: 0;}
+.formfield
+	{ border: 1px solid #999; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; padding:3px;}
+
+
+/*  #gnavi(.gnavi)設定
+------------------------------------------------------------------------------------------------------*/
+.gnavi,
+#gnavi{
+	height:30px;
+	background: #F5F5F5 url(./img/gn_back.gif) repeat-x 0px bottom;
+	border-bottom:1px solid #aaa;
+	border-top:1px solid #aaa;}
+
+.gnavi ul,#gnavi ul{margin:0px;padding:0px;}
+.gnavi li,#gnavi li{
+	width:20%;
+	text-align:center;
+	list-style:none;
+	float:left;
+	border-right:1px solid #ccc;
+	border-left:1px solid #fff;
+}
+
+.gnavi li a,#gnavi li a{
+	padding:5px 0;
+	width:100%;
+	text-decoration:none;
+	display:block;
+	color:#3a3a3a;
+}
+
+.gnavi li a:hover,
+#gnavi li a:hover{
+	background: #F5F5F5 url(./img/gn_backACT.gif) repeat-x top center;
+	color:#3a3a3a;
+}
+
+/* #tnavi(.tnavi)設定
+------------------------------------------------------------------------------------------------------*/
+#tnavi,.tnavi{}
+#tnavi ul,.tnavi ul	{margin:0px;padding:0px;}
+#tnavi li,.tnavi li	{display:inline;list-style:none;}
+#tnavi li a,.tnavi li a{}
+#tnavi li a:hover,.tnavi li a:hover{}
+
+
+/*  テーブル設定
+------------------------------------------------------------------------------------------------------*/
+/* sheet
+-------------------*/
+table.sheet{ width:94%; background:#FFF;border-collapse:collapse; border-spacing:0px; margin:0;}
+	.sheet th,.sheet td{ padding:5px; border:1px solid #CCC;}
+	.sheet th{ font-weight:normal; background-color: #EEE; text-align:left; vertical-align:top;white-space: nowrap;}
+	.sheet td{ }
+	.sheet td ul{ margin:0px;}
+	.sheet td ul li{ float:left; width:100px; list-style:none;margin:0;padding:0;}
+
+/* cols 
+----------------*/
+table.cols{
+	margin:0px ;
+	width:100%;
+	_width:96%;
+	border-collapse:collapse;
+	border-spacing:0px;
+}
+table.cols th{font-weight:normal;background-color: #eee; padding:2px 3px;border:1px solid #CCCCCC;}
+table.cols td{padding:6px 6px 15px 6px; border:none; vertical-align:top; width:50%;}
+table.cols ul{list-style:none;margin:0px;padding-left: 0px;}
+table.cols ul li{width:50%;float:left;}
+/* Add 02/17 */
+.cols td img.floatl{margin-right:5px;}
+.cols td img.floatr{margin-left:5px;}
+
+/* triple 
+-----------------*/
+table.triple{margin:0px;
+	width:100%;
+	_width:96%;
+	border-collapse:collapse;
+	border-spacing:0px;
+}
+table.triple th{
+	font-weight:normal;background-color: #eee; padding:2px 3px;border:1px solid #CCCCCC;
+}
+table.triple td{
+	padding:6px 6px 15px 6px;
+	vertical-align:top; width:33%;	
+}
+table.triple ul{list-style:none;margin:0px;padding-left: 0px;}
+table.triple ul li{float:left;width:33%;}
+/* Add 02/17 */
+.triple td img.floatl{margin-right:5px;}
+.triple td img.floatr{margin-left:5px;}
+
+
+/* default */
+table.default{margin:0px auto;border-collapse:collapse;border-spacing:0px;}
+table.default td{padding:3px 3px; vertical-align:top;}
+
+
+/* マージン & パディング 
+------------------------------------------------------------------------------------------------------*/
+.mpl0{margin-left:0px !important;padding-left:0 !important;}
+.mr0{margin-right:0px !important;}
+
+.p3{padding:3px;}
+.pb3{padding-bottom:3px !important;}
+.pb3 td{padding-bottom:3px !important;}
+.pt3{padding-top:3px !important;}
+.mb3{margin-bottom:3px;}
+
+.p5{padding:5px;}
+.pb5 {padding-bottom:5px !important;}
+.pb5 td{padding-bottom:5px !important;}
+.pl5{padding-left:5px;}
+.pt5{padding-top:5px;}
+.m5{margin:5px;}
+.ml5{margin-left:5px;}
+.mb5{margin-bottom:5px;}
+.mt5{margin-top:5px;}
+
+.p10{padding:10px;}
+.m10{margin:10px;}
+.ml10{margin-left:10px;}
+.mt10{margin-top:10px;}
+.mtl10{margin-top:10px;margin-left:10px;}
+.mb10{margin-bottom:10px;}
+.mtb10{margin-bottom:10px;margin-top:10px;}
+
+.ml15{margin-left:15px;}
+
+.ml20{margin-left:20px;}
+.mt20{margin-top:20px;}
+
+.mt30{margin-top:30px;}
+
+/*  Utility
+------------------------------------------------------------------------------------------------------*/
+.alignT{vartical-align:top;}
+.alignr{text-align:right;}
+.alignl{text-align:left;}
+.alignC{text-align:center;}
+.floatr{float:right;}
+.floatl{float:left;}
+.bold{font-weight:bold;}
+.clear{clear:both;}
+br.del,div.del{clear:both;}
+ul.del{margin:0 !important;padding:0 !important;}
+.no_bg{background:#fff;}
+.underline{text-decoration:underline;}
+ul.underline li a{text-decoration:underline !important;}
+.links{display:none;}
+
+
+/*  透明度設定 
+------------------------------------------------------------------------------------------------------*/
+#transp80,
+.transp80{filter:alpha(opacity=80);	-moz-opacity: 0.8;opacity: 0.8;}
+#transp70,
+.transp70{filter:alpha(opacity=70);	-moz-opacity: 0.7;opacity: 0.7;}
+#transp65,
+.transp65{filter:alpha(opacity=65);	-moz-opacity: 0.65;opacity: 0.65;}
+#transp60,
+.transp60{filter:alpha(opacity=60);	-moz-opacity: 0.6;opacity: 0.6;}
+
+
+/*  アイコン設定
+------------------------------------------------------------------------------------------------------*/
+.google{background: #FFF url(./img/icon-google.png) no-repeat center left !important; padding-left:20px !important;}
+.yahoo{background: #FFF url(./img/icon-yahoo.gif) no-repeat center left !important;	padding-left:20px !important;}
+.mail{background: #FFF url(./img/icon_mail.gif) no-repeat center left !important; padding-left:20px !important;}
+.mail2{background: #FFF url(./img/icon-mail2.gif) no-repeat center left !important; padding-left:15px !important;}
+.dir{background: #FFF url(./img/icon-dir.gif) no-repeat center left !important;padding-left:22px!important;}
+.dir2{background: #FFF url(./img/icon-dir2.gif) no-repeat center left !important;padding-left:15px!important;}
+.dir3{background: #FFF url(./img/icon-dir3.gif) no-repeat center left !important;padding-left:15px!important;}
+.dirup{background: #FFF url(./img/icon-dirup.gif) no-repeat center left !important;padding-left:17px!important;}
+.earth{background: #FFF url(./img/icon-earth.gif) no-repeat center left !important;padding-left:18px !important;}
+.pr{background: #FFF url(./img/icon-pr.gif) no-repeat center left !important;padding-left:27px !important;}
+.new{background: #FFF url(./img/icon-new.gif) no-repeat center left !important;padding-left:29px!important;}
+.search{background: #FFF url(./img/icon-search.gif) no-repeat center left !important;padding-left:19px !important;}
+.mobile{background: #FFF url(./img/icon-mobile.gif) no-repeat center left !important;padding-left:10px !important;}
+.ie{background: #FFF url(./img/icon-ie.jpg) no-repeat center left !important;padding-left:21px !important;}
+.ie2{background: #FFF url(./img/icon-ie.jpg) no-repeat center left !important;padding-left:18px !important;}
+.tel{background: #FFF url(./img/icon_call.gif) no-repeat center left !important;padding-left:20px !important;}
+.url{background: #FFF url(./img/application_go.png) no-repeat center left !important;padding-left:20px !important;}
+.feed{background: #FFF url(./img/icon/icon_feed.gif) no-repeat center left !important;padding-left:20px !important;}
+.flash{background: #FFF url(./img/icon/icon_flash.gif) no-repeat center left !important;padding-left:20px !important;}
+.doc{background: #FFF url(./img/icon/icon_doc.gif) no-repeat center left !important;padding-left:20px !important;}
+.txt_file{background: url(./img/icon/icon_txt.gif) no-repeat center left !important;padding-left:20px !important;padding-top:2px;padding-bottom:2px;}
+.xls{background: #FFF url(./img/icon/icon_xls.gif) no-repeat center left !important;padding-left:20px !important;}
+.plugin{background: #FFF url(./img/icon/icon_plugin.gif) no-repeat center left !important;padding-left:20px !important;}
+.chat{background: #FFF url(./img/icon/icon_chat.gif) no-repeat center left !important;padding-left:20px !important;}
+
+.question{background: #FFF url(./img/question.png) no-repeat center left !important;padding-left:30px !important;}
+
+.delete{background: url(./img/icon/delete.gif) no-repeat center left !important;padding-left:18px !important;}
+.edit{background: url(./img/icon/edit.gif) no-repeat center left !important;padding-left:18px !important;}
+
+
+.big_next{background: #FFF url(./img/big_next.jpg) no-repeat center left !important;padding-left:55px !important;
+	padding-top:15px !important;
+	padding-bottom:15px !important;
+}
+
+.pagetop a,#pagetop a{display:block !important;width:102px !important;height:20px !important;background:url(./img/icon-pagetop.gif) no-repeat center left !important;text-indent:-9999px !important;float:right;}
+
+
+/*  アイコン(Arrrow)
+------------------------------------------------------------------------------------------------------*/
+.arrow_blue{background:  url(./img/list.png) center left no-repeat;padding-left:11px;}
+.arrow_red {background:url(./img/list_red.png) center left no-repeat;padding-left:11px;}
+.arrow_green{background:  url(./img/list_green.gif) center left no-repeat;padding-left:11px;}
+
+
+/*  nicetitle
+------------------------------------------------------------------------------------------------------ */
+.nicetitle { filter:alpha(opacity=80);	-moz-opacity: 0.8;opacity: 0.8; font-weight: bold; color: #3C3C3C; text-align: left; position: absolute; left: 0; top: 0; width: 25em; z-index: 20; max-width: 50%; }
+.nicetitle-content{ overflow: hidden; background: white; border: 1px solid #999; padding: 4px; }
+.nicetitle p{ margin: 0; line-height: 120%; }
+.nicetitle p.destination { font-weight: normal; font-size: 10px; color: #0066FF;}
+
+
+/*  niceimg
+------------------------------------------------------------------------------------------------------  */
+.highslide {
+	cursor: url(./graphics/zoomin.cur), pointer !important;
+	*cursor: url(./common/graphics/zoomin.cur), all-scroll !important;
+	outline: none;
+}
+
+.highslide img {
+	margin:5px; /* Add akabane */
+	padding:5px;
+	border: 2px solid #bbb;
+}
+
+.highslide:hover img {border: 2px solid #ccc;}
+
+/* ポップアップ後[画像] */
+.highslide-image {border: 2px solid #fff;}
+.highslide-image-blur {}
+
+
+/* ポップアップ画像[説明] */
+.niceimg_caption {
+	text-align:left;
+	display: none;
+	border: 2px solid white;
+	border-top: none;
+	font-family: Verdana, Helvetica;
+	font-size: 10pt;
+	padding: 5px;
+	background-color: white;
+}
+
+.highslide-display-block {
+	display: block;
+}
+
+.highslide-display-none {
+	display: none;
+}
+
+.highslide-loading {
+	display: block;
+	color: white;
+	font-size: 9px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 3px;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	background-color: black;
+}
+
+/* Copy rights */
+a.highslide-credits,
+a.highslide-credits i {
+	display:none;
+}
+
+a.highslide-credits:hover,
+a.highslide-credits:hover i {
+	display:none;
+}
+
+/* prototype作成時コメント用
+---------------------------------------------------*/
+#prototype{text-align:left!important;}
+
+#prototype #container,.container
+		{margin:0;}
+#prototype #bg
+		{margin:0;}
+
+#prototype #absolute_check p{
+	font-size:13px;
+	position:absolute;
+	background:#000;
+	color:#fff;
+	padding:5px;
+}
+
+/* タイムカウンター (for javascript) 
+-----------------------------------------------------*/
+.get_time{
+	font-size: 35px;
+	color:#137075;
+	background-color: #ffffff ;
+	border: #ffffff thin solid;
+}
+/* RSS取得表示欄
+----------------------------------------------------*/
+.rss_replace li,
+.rss_replace ul{
+	list-style:none;
+	margin:0;padding:0;
+}
+
+.rss_replace li a{
+	background: #FFF url(./img/application_go.png) no-repeat center left !important;padding-left:20px !important;
+}

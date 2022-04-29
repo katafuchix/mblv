@@ -1,0 +1,338 @@
+
+=================================================================================
+■本ドキュメントに関して
+本ドキュメントでは、【モバイルバース】用の以下に関するサーバ環境構築の方法を記載しております。
+ 1. ツールとコマンドのインストール
+ 2. ウェブサーバ環境構築
+ 3. DBサーバ環境構築
+ 4. SMTPサーバ環境構築
+ 5. 負荷分散環境構築
+ 6. Cronの設定
+ 7. etcディレクトリの設定
+ 8. binディレクトリの設定
+ 9. 初期データベースに必要なデータ
+
+
+=================================================================================
+■1. ツールとコマンドのインストール■
+  サーバ環境の構築は基本的に「ports(BSD系)やyum(CentOS系)コマンドによるパッケージ管理」を前提としています。今回構築されるネットワーク内のサーバには、サービス運用に必要な各種ツールとコマンドをインストールしてください。
+  ・一般的なLinuxまたはBSD環境のデフォルトコマンド群(ls,cdなど)
+  ・zsh
+  ・scp
+  ・rsync
+  ・svn
+
+
+=================================================================================
+■2. ウェブサーバ環境構築■
+  ウェブサーバに必要なアプリケーションは以下です。
+ 1. Apache2.2系
+ 2. PHP5.2系
+ 3. php-extention
+ 4. eAccelarator
+ 5. memcached
+ 6. MySQL5.0系または5.1系
+ 7. Postfix1.9系以降
+ 8. vsftpd2.0系
+
+---------------------------------------------------------------------------------
+[2-1]Apache
+  パッケージ管理コマンドによるインストール後、パフォーマンスチューニング用に最低限以下のパラメタを制御して下さい。記載の数値は基本推奨値です。
+(httpd.conf内）
+MaxClients 50
+MaxRequestsPerChild 3000
+
+次にサービス稼働用のVirtualホストの設定を行って下さい。以下の内容を実運用パスにあわせて設定してください。
+
+(httpd.conf内[Directory]ディレクティブ）
+<Directory "/home/htdocs">
+    Options -Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+</Directory>
+
+(httpd.conf内[VirtualHost]ディレクトリ）
+NameVirtualHost 59.106.27.80:80
+NameVirtualHost 59.106.27.80:443
+#eeco.varth.jp
+<VirtualHost 59.106.27.80>
+        DocumentRoot "/home/htdocs/eeco.varth.jp/public_user/"
+        ServerName eeco.varth.jp
+        <IfModule alias_module>
+            Alias /admin /home/htdocs/eeco.varth.jp/public_admin
+            Alias /contents /home/htdocs/eeco.varth.jp/public_file
+        </IfModule>
+        <Directory "/home/htdocs/eeco.varth.jp/public_user/">
+                Allow from all
+                AllowOverride None
+                Directoryindex index.php
+                php_flag session.use_trans_sid On
+                php_flag magic_quotes_gpc Off
+                php_flag session.use_cookies Off
+                AddType application/x-decomail-template .dmt
+                AddType application/x-kddi-htmlmail .khm
+                AddType application/x-htmlmail-template .hmt
+                AddType application/x-smaf .mmf
+                AddType text/x-hdml .hdml
+                AddType application/x-mpeg .amc
+                AddType video/3gpp2 .3g2
+                AddType audio/3gpp2 .3g2
+                AddType video/3gpp .3gp
+                AddType audio/3gpp .3gp
+                AddType application/x-httpd-php .htm .html .3g2
+        </Directory>
+        <Directory "/home/htdocs/eeco.varth.jp/public_admin/">
+                Allow from all
+                AllowOverride None
+                DirectoryIndex index.php
+                php_flag magic_quotes_gpc Off
+        </Directory>
+        <Directory "/home/htdocs/eeco.varth.jp/contents/">
+                Allow from all
+                AllowOverride None
+                DirectoryIndex index.php
+                AddType application/x-decomail-template .dmt
+                AddType application/x-kddi-htmlmail .khm
+                AddType application/x-htmlmail-template .hmt
+                AddType application/x-smaf .mmf
+                AddType text/x-hdml .hdml
+                AddType application/x-mpeg .amc
+                AddType video/3gpp2 .3g2
+                AddType audio/3gpp2 .3g2
+                AddType video/3gpp .3gp
+                AddType audio/3gpp .3gp
+                AddType application/x-httpd-php .htm .html .php
+        </Directory>
+</VirtualHost>
+#eeco.varth.jp end
+
+---------------------------------------------------------------------------------
+[2-2]PHP
+  パッケージ管理コマンドによるインストール時にCLIバージョンを選択してください（Apacheにphp_moduleとして組み込まれます）。インストール後、php.iniにてPHPのログを適宜保存するよう設定して下さい。
+
+---------------------------------------------------------------------------------
+[2-3]php-extention
+  主に、以下のパッケージをインストールしてください。
+?	php-devel
+?	php-mbstring
+?	php-mysql
+?	php-pgsql
+?	php-pecl\*
+?	php-zlib
+その他、パッケージ管理上適宜要求されたパッケージをインストールして下さい。
+
+---------------------------------------------------------------------------------
+[2-4]eAccelarator
+  eAcceleratorはパッケージ管理に入っていないことが多いので、ソースからのインストールを紹介します。（パッケージがあればそちらがベストです。）
+# ソースの取得
+wget http://bart.eaccelerator.net/source/0.9.5.2/eaccelerator-0.9.5.2.tar.bz2
+
+# 展開
+tar jxvf eaccelerator-0.9.5.2.tar.bz2
+
+# ディレクトリの移動
+cd eaccelerator-0.9.5.2
+
+# 先ほどphpiseを入れたので、その想定でconfigure->make->make install
+./configure --enable-eaccelerator=shared --with-php-config=/usr/bin/php-config
+make
+make install
+
+# phpの設定変更
+vi /etc/php.ini
+# 最終行に追加
+[eAccelerator]
+zend_extension = "/usr/lib/php/modules/eaccelerator.so"
+eaccelerator.shm_size = "16"
+eaccelerator.cache_dir = "/tmp/eaccelerator"
+eaccelerator.enable = "1"
+eaccelerator.optimizer = "1"
+eaccelerator.check_mtime = "1"
+eaccelerator.debug = "0"
+eaccelerator.filter = ""
+eaccelerator.shm_max = "0"
+eaccelerator.shm_ttl = "0"
+eaccelerator.shm_prune_period = "0"
+eaccelerator.shm_only = "0"
+eaccelerator.compress = "1"
+eaccelerator.compress_level = "9"
+eaccelerator.keys = "shm_and_disk"
+eaccelerator.sessions = "shm_and_disk"
+eaccelerator.content = "shm_and_disk"
+
+# キャッシュディレクトリの作成
+mkdir /tmp/eaccelerator
+chmod 0777 /tmp/eaccelerator
+
+完了後、Apacheを再起動してphpへの設定変更を反映。
+公開ディレクトリに、以下の記載をしたphpファイルを生成、
+<?php phpinfo(); ?>
+ブラウザからアクセスを行い、eAcceleratorの項目が表示されていることを確認する。
+展開したソースコードの中にある「control.php」というファイルを公開ディレクトリに移動し、以下の部分を編集
+$user = "admin";
+$pw = "eAccelerator";
+ブラウザからアクセスを行い、キャッシュ情報が存在すればインストール成功になります。
+
+---------------------------------------------------------------------------------
+[2-5]memcached
+  パッケージ管理コマンドから「memcached」をインストールして下さい。その後peclコマンドにてPHPにmemcachedをインストールして下さい。
+pecl install memcahce
+phpのextention.iniに以下の設定が追加されていない場合は追加して下さい。
+extension=memcache.so
+
+デーモン起動ファイル(OSによってchkconfigやinetd)に登録して、デーモン再起動してください。その後、PHPの設定を反映させる為にApacheを再起動してください。
+
+---------------------------------------------------------------------------------
+[2-6]MySQL（クライアント用）
+　パッケージ管理コマンドによるインストール時に、「ujis」「sjis」オプションを忘れずに追加して下さい。databaseの文字コードは「ujis」に統一して下さい。パフォーマンスチューニング用に最低限以下のパラメタを制御して下さい。記載の数値は基本推奨値です。
+(my.cnf内[mysqld]ディレクティブ)
+log-slow-queries
+long-query-time=1
+log-long-format
+query_cache_size = 16M
+
+(my.cnf内[mysql]ディレクティブ)
+prompt=[\D \u@\h/\d \v (\c)]\n
+
+---------------------------------------------------------------------------------
+[2-7]Postfix
+パッケージ管理によるインストール時、オプションにpcreが入っていない場合は導入して下さい。以下の内容を実運用パスにあわせて設定してください。
+main.cfに以下を追加して下さい。
+# virtual
+virtual_alias_maps = pcre:/etc/postfix/pcre_virtual
+pcre_virtualに以下を追加して下さい。
+/^eeco-[0-9a-zA-Z_]*@varth.jp/	eeco_receive_varth_jp
+aliasesに以下を追加して下さい。（実際には一行です。）
+eeco_receive_varth_jp:	"|/usr/local/bin/php 
+/home/htdocs/eeco.varth.jp/bin/mail_receive.php
+
+---------------------------------------------------------------------------------
+[2-8]vsftpd
+  パッケージ管理コマンドによるインストール後、各ウェブサーバにコンテンツディレクトリへのアクセス権限がある、同一ユーザ名・同一パスワードのアカウントを生成して下さい。
+
+
+=================================================================================
+■3. DBサーバ環境構築
+DBサーバに必要なアプリケ－ションは以下です。
+ 1. MySQL5.0系または5.1系
+
+---------------------------------------------------------------------------------
+[3-1]MySQL（サーバ用）
+  パッケージ管理コマンドによるインストール時に、「ujis」「sjis」オプションを忘れずに追加して下さい。databaseの文字コードは「ujis」に統一して下さい。パフォーマンスチューニング用に最低限以下のパラメタを制御して下さい。記載の数値は基本推奨値です。
+(my.cnf内[mysqld]ディレクティブ)
+log-slow-queries
+long-query-time=1
+log-long-format
+query_cache_size = 16M
+
+(my.cnf内[mysql]ディレクティブ)
+prompt=[\D \u@\h/\d \v (\c)]\n
+
+---------------------------------------------------------------------------------
+[3-2]MySQL（レプリケーション設定）
+  レプリケーションは「マスタースレーブ方式」で行います。更新は1台の「マスター」へ、参照は複数台の「スレーブ」へ行います。参照の負荷分散に関してはアプリケーション側で自動的に振り分けます。
+
+①「マスター」設定確認
+  my.cnf内[mysqld]ディレクティブを確認。
+log-bin      <== バイナリログを取ることを指定
+server-id=1  <== 識別用ID。任意の値。他のサーバーと重複しないようにする。
+設定を更新した場合は、mysqldを再起動して下さい。
+
+②レプリケーション用アカウント作成
+「スレーブ」から「マスター」へ接続する際のアカウントを「マスター」側に用意しておく必要があります。このアカウントはREPLICATION SLAVE権限を持っている必要があります。
+
+以下は10.0.0.2(「スレーブ」のIPアドレス)から接続を許す'repl'ユーザーを作成する例です。
+(「マスター」側)
+mysql> GRANT REPLICATION SLAVE ON *.* TO
+   repl@10.0.0.2 IDENTIFIED BY 'password';
+
+③データベースのコピー
+「マスター」のデータベースを「スレーブ」にコピーする。コピーの際、データベースが更新されないように書き込みをロックします。
+(「マスター」側)
+mysql> FLUSH TABLES WITH READ LOCK;
+現在のバイナリログの状態を確認(ロック中に行う)。
+(「マスター」側)
+mysql> SHOW MASTER STATUS;
++-------------------------+----------------+----------------------+---------------------------+
+| File             | Position   | Binlog_Do_DB| Binlog_Ignore_DB |
++-------------------------+----------------+----------------------+---------------------------+
+| mysql-bin.000001|       79  |              |                  |
++-------------------------+----------------+----------------------+---------------------------+
+1 row in set (0.00 sec)
+現在のバイナリログのファイル名とログ内の現在位置が表示されるので、記録しておきます（重要）。これらは、ロック解除してから「スレーブ」を立ち上げるまでにDBの更新があった場合、現在位置以降のクエリを実行してDBを一致させるため、「スレーブ」を起動する時に必要になります。
+
+「マスター」側のデータベースをバックアップします。データベースは書き込みのロックがされているのでtarでアーカイブすればよいです。以下ではtestDBのみバッ クアップしています。全てのデータベースをレプリケーションしたい場合は、全データベースをバックアップします。
+(「マスター」側)
+# cd /home/mysql/               <== MySQLのデータディレクトリへ移動
+# tar cvf ~/testDB.tar testDB  <== データベースをバックアップ
+データベースのバックアップが完了後は、書き込みのロックは解除できます。これで、サービス稼働状態でも、マスター側は通常の運用に戻ることができます。
+(「マスター」側)
+mysql> UNLOCK TABLES;
+バックアップしたデータベースを「スレーブ」側に持っていきます。作成したtarファイルをftpなどで「スレーブ」側へ持っていき、MySQLのデータ ディレクトリに展開します。ここで、展開したファイルは「マスター」側と同じパーミッションにしておく必要があります。
+(「スレーブ」側)
+# cd /home/mysql/
+# tar xvf ~ /testDB.tar
+
+④「スレーブ」設定
+「スレーブ」側のmy.cnfにserver-idを設定します。
+my.cnf内[mysqld]ディレクティブ
+server-id=2  <== 識別用ID。任意の値。他のサーバーと重複しないようにする。
+設定後、「スレーブ」側のmysqldを再起動して下さい。
+
+⑤レプリケーションの開始
+「スレーブ」側で「マスター」へ接続するためのパラメータ(ホスト名やユーザー名)を設定します。
+(「スレーブ」側)
+mysql> CHANGE MASTER TO
+        MASTER_HOST='10.0.0.1',  <== Masterのホスト名/IPアドレス
+        MASTER_USER='repl',      <== Master接続に使用するユーザー名
+        MASTER_PASSWORD='password', <== パスワード
+        MASTER_LOG_FILE='mysql-bin.000001', <==BinlogFile
+        MASTER_LOG_POS=79;       <== BinlogのPosition
+レプリケーションを開始。
+(「スレーブ」側)
+mysql> START SLAVE;
+この時点で、「マスター」側で書き込みロックを解除してからの「マスター」データベースの変更は「スレーブ」側にも反映されます。これ以降、「マスター」で発生した変更 は「スレーブ」にも通知されてデータベースの内容が同期されます。「スレーブ」側のmysqldを落として再起動した場合でも、その間の変更分は自動的に同期されます。
+  同期ができていない場合は、「スレーブ」側のエラーファイルにログがでているはずなので確認して下さい。
+  「マスター」と「スレーブ」で文字コードの設定などが違っていたりすると、「マスター」に接続できなかったりするので注意する必要があります。
+
+
+=================================================================================
+■4. SMTPサーバ環境構築
+  弊社では、通常高速メール配信エンジンとして「株式会社ブレイン」社のメールエンジンを採用しております。SMTPサーバはウェブサーバから接続し、メール配送に使用します。その際、【ホスト】【ポート】を指定して接続しますので、特定ウェブサーバからの特定ポートへのアクセスを承認するようにしてください。
+
+
+=================================================================================
+■5. 負荷分散環境構築
+  ウェブアクセスの負荷分散はロードバランサにて行う想定でおります。所定のウェブサーバIPにアクセスを振り分けて頂ければアプリケーション側で分散環境でも稼働する設計となっております。分散に際して、特筆する処理は以下になります。
+?	memcachedによる分散環境でのセッション共有
+?	システムトリガーによるFTP経由コンテンツ同期
+?	MySQLレプリケーション
+
+=================================================================================
+■6.Cronの設定
+  crontabに以下の設定を追加して下さい。
+#mail
+*/10 * * * * /usr/local/bin/php /home/htdocs/mblv/bin/cli_manager.php mail_send
+#stats
+0 * * * * /usr/local/bin/php /home/htdocs/mblv/bin/cli_manager.php cron_stats all hour
+0 0 * * * /usr/local/bin/php /home/htdocs/mblv/bin/cli_manager.php cron_stats all day
+0 0 1 * * /usr/local/bin/php /home/htdocs/mblv/bin/cli_manager.php cron_stats all month
+0 0 1 1 * /usr/local/bin/php /home/htdocs/mblv/bin/cli_manager.php cron_stats all year
+#ranking
+0 0 * * 4 /usr/local/bin/php /home/htdocs/mblv/bin/cli_manager.php cron_ranking all
+#review
+0 13 * * * /usr/local/bin/php /home/htdocs/mblv/bin/cli_manager.php cron_review
+
+
+■7. etcフォルダ内の設定
+  base-ini.phpに稼働ファイルのパス設定を行って下さい。
+
+■8. binフォルダ内の設定
+  cli_manager.phpに稼働ファイルのパス設定を行って下さい。
+
+■9. 初期データべースに必要なデータ
+  （バージョンにより変動）
+
+以上
+

@@ -1,0 +1,127 @@
+{include file="admin/header.tpl"}
+
+<div id="two_column">
+	<!-- *********************** /* #main ****************************** -->
+	<div id="main" class="floatr">
+		<div id="mainC">
+			<h2>{$ft.shop.name}管理</h2>
+			<blockquote><a href="?action_admin_util=true&page=faq_shop_list&keepThis=true&TB_iframe=true&height=700&width=700" class="thickbox">{$ft.shop.name}管理FAQ</a></blockquote>
+			<!-- ここからメインコンテンツ-->
+			<div class="entry_box">
+				{if count($errors)}<span class="err">{foreach from=$errors item=error}{$error}<br />{/foreach}</span>{/if}
+				{$ft.menu_icon.name}<a href="?action_admin_ec_shop_add=true">{$ft.shop.name}登録</a><br />
+				
+				{if $app.listview_total == 0}
+					検索条件に合致する{$ft.shop.name}は見つかりませんでした。
+				{else}
+					検索条件に合致する{$ft.shop.name}が{$app.listview_total}件見つかりました。<br />
+				{/if}
+			</div>
+			{form ethna_action="admin_ec_shop_list"}
+			<table class="sheet">
+				<tr>
+					<th>登録期間</th>
+					<td {if $app.shop_created_active}class="active"{/if} nowrap>
+						{form_input name="shop_created_year_start" emptyoption=""}年
+						{form_input name="shop_created_month_start" emptyoption=""}月
+						{form_input name="shop_created_day_start" emptyoption=""}日
+						〜
+						{form_input name="shop_created_year_end" emptyoption=""}年
+						{form_input name="shop_created_month_end" emptyoption=""}月
+						{form_input name="shop_created_day_end" emptyoption=""}日
+					</td>
+					<th style="width:20%">{form_name name="shop_id"}</th>
+					<td {if $app.shop_id_active}class="active"{/if}>{form_input name="shop_id"}</td>
+				</tr>
+				<tr>
+					<th>更新期間</th>
+					<td {if $app.shop_updated_active}class="active"{/if} nowrap>
+						{form_input name="shop_updated_year_start" emptyoption=""}年
+						{form_input name="shop_updated_month_start" emptyoption=""}月
+						{form_input name="shop_updated_day_start" emptyoption=""}日
+						〜
+						{form_input name="shop_updated_year_end" emptyoption=""}年
+						{form_input name="shop_updated_month_end" emptyoption=""}月
+						{form_input name="shop_updated_day_end" emptyoption=""}日
+					</td>
+					<th style="width:20%">{form_name name="shop_name"}</th>
+					<td {if $app.shop_name_active}class="active"{/if}>{form_input name="shop_name"}</td>
+				</tr>
+				<!--
+				<tr>
+					<th>退会期間</th>
+					<td {if $app.shop_deleted_active}class="active"{/if} nowrap>
+						{form_input name="shop_deleted_year_start" emptyoption=""}年
+						{form_input name="shop_deleted_month_start" emptyoption=""}月
+						{form_input name="shop_deleted_day_start" emptyoption=""}日
+						〜
+						{form_input name="shop_deleted_year_end" emptyoption=""}年
+						{form_input name="shop_deleted_month_end" emptyoption=""}月
+						{form_input name="shop_deleted_day_end" emptyoption=""}日
+					</td>
+					<th style="width:20%"></th>
+					<td></td>
+				</tr>
+				-->
+				<tr>
+					<th>{form_name name="shop_status"}</th>
+					<td {if $app.shop_status_active}class="active"{/if}>
+						{form_input name="shop_status"}
+					</td>
+					<th></th>
+					<td>{form_input name="search"}</td>
+				</tr>
+			</table>
+			{/form}
+			
+			{include file="admin/pager.tpl"}
+			{form action="$script" ethna_action="admin_ec_shop_priority_do"}
+			<table class="sheet" id="list">
+				<tr>
+					<th nowrap>{form_name name="shop_priority_id"}</th>
+					<th nowrap>{form_name name="shop_id"}</th>
+					<th nowrap>{form_name name="shop_status"}</th>
+					<th nowrap>
+						登録日時<br />
+						更新日時<br />
+					<!-- 	退会日時 -->
+					</th>
+					<th nowrap>{form_name name="shop_name"}</th>
+					<th nowrap>{$ft.item_category.name}一覧</th>
+					<th nowrap>編集</th>
+					<th nowrap>削除</th>
+				</tr>
+				{foreach from=$app.listview_data item=item name=user}
+				{if $item != false}
+				<tr>
+					<td><input name="shop_priority_id[{$item.shop_id}]" value="{$item.shop_priority_id}" size="4"></td>
+					<td>{$item.shop_id}</td>
+					<td {if $item.shop_status==0}class="disable"{/if}>{$config.regist_status[$item.shop_status].name}</td>
+					<td nowrap>
+						[登録]:{$item.shop_created_time|jp_date_format:"%Y/%m/%d(%a) %H:%M"}<br />
+						[更新]:{$item.shop_updated_time|jp_date_format:"%Y/%m/%d(%a) %H:%M"}<br />
+					<!-- 	[退会]:{$item.shop_deleted_time|jp_date_format:"%Y/%m/%d(%a) %H:%M"} -->
+					</td>
+					<td>{$item.shop_name}</td>
+					<td><a href="?action_admin_ec_itemcategory_list=true&shop_id={$item.shop_id}">{$ft.item_category.name}一覧へ</a></td>
+					<td><a href="?action_admin_ec_shop_edit=true&shop_id={$item.shop_id}">編集</a></td>
+					<td><a href="?action_admin_ec_shop_delete_do=true&shop_id={$item.shop_id}" onClick="return confirm('本当にこの{$ft.shop.name}を削除してもよろしいですか？');">削除</a></td>
+				</tr>
+				{/if}
+				{/foreach}
+			</table>
+			{form_input name="shop_priority_edit"}
+			{/form}
+			
+			{include file="admin/pager.tpl"}
+			
+			<!-- ここまでメインコンテンツ-->
+		</div>
+	</div>
+	<!-- *********************** #main */ ****************************** -->
+
+{include file="admin/side.tpl"}
+
+</div>
+<!-- #two column */ -->
+{include file="admin/footer.tpl"}

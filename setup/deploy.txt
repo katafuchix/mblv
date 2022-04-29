@@ -1,0 +1,185 @@
+biew.jpへのmazblv.biew.jpデプロイ手順 FreeBSD 6.2-RELEASE-p4@20080924
+
+
+#########
+# ID,PW #
+#########
+http://mazblv.biew.jp
+http://mazblv.biew.jp/admin admin:macdocomo
+mysql -umazblv -pmazblvmaccoda -hlocalhost mazblv
+mysql -umazblv -pmazblvmaccoda -hlocalhost mazblv_stats
+ftp://mazblv:SsTX2qjaOs@biew.jp
+
+
+########################
+### ソースチェックアウト ###
+########################
+cd /home/htdocs
+svn co http://varth.jp/svn/repos/mblv
+mv mblv mazblv.biew.jp
+chmod -R 0777 log public_file template tmp
+
+
+##############
+### apache ###
+##############
+su
+vi /usr/local/etc/apache22/httpd.conf
+	### mazblv.biew.jp ###
+	<VirtualHost 219.94.174.11>
+		DocumentRoot "/home/htdocs/mazblv.biew.jp/public_user/"
+		ServerName mazblv.biew.jp
+		<IfModule alias_module>
+			Alias /admin /home/htdocs/mazblv.biew.jp/public_admin
+			Alias /company /home/htdocs/mazblv.biew.jp/public_company
+			Alias /contents /home/htdocs/mazblv.biew.jp/contents
+		</IfModule>
+		<Directory "/home/htdocs/mazblv.biew.jp/public_user/">
+			allow from all
+			directoryindex index.php
+			php_flag session.use_trans_sid On
+			php_flag magic_quotes_gpc Off
+			php_flag session.use_cookies Off
+			AddType application/x-decomail-template .dmt
+			AddType application/x-kddi-htmlmail .khm
+			AddType application/x-htmlmail-template .hmt
+			AddType application/x-smaf .mmf
+			AddType text/x-hdml .hdml
+			AddType application/x-mpeg .amc
+			AddType video/3gpp2 .3g2
+			AddType audio/3gpp2 .3g2
+			AddType video/3gpp .3gp
+			AddType audio/3gpp .3gp
+			AddType application/x-httpd-php .htm .html .3g2
+		</Directory>
+		<Directory "/home/htdocs/mazblv.biew.jp/public_admin/">
+			allow from all
+			php_value output_handler none
+			php_value mbstring.language Japanese
+			php_flag mbstring.encoding_translation On
+			php_value mbstring.http_input pass
+			php_value mbstring.http_output pass
+			php_value mbstring.internal_encoding EUC-JP
+			php_value mbstring.substitute_character none
+			php_flag magic_quotes_gpc Off
+			AllowOverride None
+			DirectoryIndex index.html index.php
+		</Directory>
+		<Directory "/home/htdocs/mazblv.biew.jp/public_company/">
+			allow from all
+			php_value output_handler none
+			php_value mbstring.language Japanese
+			php_flag mbstring.encoding_translation On
+			php_value mbstring.http_input pass
+			php_value mbstring.http_output pass
+			php_value mbstring.internal_encoding EUC-JP
+			php_value mbstring.substitute_character none
+			php_flag magic_quotes_gpc Off
+			AllowOverride None
+			DirectoryIndex index.html index.php
+		</Directory>
+		<Directory "/home/htdocs/mazblv.biew.jp/contents/">
+			AddType application/x-decomail-template .dmt
+			AddType application/x-kddi-htmlmail .khm
+			AddType application/x-htmlmail-template .hmt
+			AddType application/x-smaf .mmf
+			AddType text/x-hdml .hdml
+			AddType application/x-mpeg .amc
+			AddType video/3gpp2 .3g2
+			AddType audio/3gpp2 .3g2
+			AddType video/3gpp .3gp
+			AddType audio/3gpp .3gp
+			AddType application/x-httpd-php .htm .html .php
+			AllowOverride None
+			Allow from all
+			DirectoryIndex index.html index.php
+		</Directory>
+	</VirtualHost>
+	#mazblv.biew.jp end
+/usr/local/sbin/apachectl restart
+
+
+###############
+### postfix ###
+###############
+vi /usr/local/etc/postfix/pcre_virtual
+	##################
+	# mazblv.biew.jp #
+	##################
+	/^mazblv-[0-9a-zA-Z_]*@biew.jp/ mazblv_receive_biew_jp
+vi /etc/aliases
+	##################
+	# mazblv.biew.jp #
+	##################
+	mazblv_receive_biew_jp:  "|/usr/local/bin/php /home/htdocs/mazblv.biew.jp/bin/cli_manager.php mail_receive"
+newaliases
+root->exit
+
+
+#############
+### MySQL ###
+#############
+#rootでmysqlログインしてDB作成、ユーザ作成、権限設定
+mysql -uroot -p
+CREATE DATABASE mazblv DEFAULT CHARACTER SET ujis;
+CREATE DATABASE mazblv_stats DEFAULT CHARACTER SET ujis;
+flush privileges;
+use mysql;
+insert into user (Host,User,Password)values('localhost','mazblv',password('mazblvmaccoda'));
+flush privileges;
+grant all on mazblv.* to mazblv@localhost identified by 'mazblvmaccoda';
+grant all on mazblv_stats.* to mazblv@localhost identified by 'mazblvmaccoda';
+flush privileges;
+#デフォルトデータをインポート
+mysql -umazblv -pmazblvmaccoda -hlocalhost mazblv < /home/htdocs/mazblv.biew.jp/setup/sql/mblv.sql
+mysql -umazblv -pmazblvmaccoda -hlocalhost mazblv_stats < /home/htdocs/mazblv.biew.jp/setup/sql/mblv_stats.sql
+
+
+#############
+### Ethna ###
+#############
+etc/base-ini.php
+bin/cli_manager.php
+にif分岐でmazblv.biew.jpを追記してsvnコミット、svn更新する
+
+
+############
+### cron ###
+############
+crontab -e
+	##################      
+	# mazblv.biew.jp #
+	##################
+	#mail 
+	*/10 * * * * /usr/local/bin/php /home/htdocs/mazblv.biew.jp/bin/cli_manager.php mail_send
+	#stats
+	0 * * * * /usr/local/bin/php /home/htdocs/mazblv.biew.jp/bin/cli_manager.php cron_stats all hour
+	0 0 * * * /usr/local/bin/php /home/htdocs/mazblv.biew.jp/bin/cli_manager.php cron_stats all day
+	0 0 1 * * /usr/local/bin/php /home/htdocs/mazblv.biew.jp/bin/cli_manager.php cron_stats all month
+	0 0 1 1 * /usr/local/bin/php /home/htdocs/mazblv.biew.jp/bin/cli_manager.php cron_stats all year
+	#ranking
+	0 0 * * 1 /usr/local/bin/php /home/htdocs/mazblv.biew.jp/bin/cli_manager.php cron_ranking all
+	#review
+	0 13 * * * /usr/local/bin/php /home/htdocs/mazblv.biew.jp/bin/cli_manager.php cron_review
+
+
+##############
+### vsftpd ###
+##############
+#ローカルアカウント作成
+adduser mazblv
+sh:nologin,home:で
+SsTX2qjaOs
+#ユーザをftpリストに追加
+echo mazblv >> /usr/local/etc/vsftpd.user_list
+#ftprootディレクトリとしたい場所指定
+echo local_root=/home/htdocs/mazblv.biew.jp > /usr/local/etc/vsftpd_users/mazblv
+
+
+###########
+### svn ###
+###########
+#ここまでの作業をコミット、更新、ディレクトリ権限を更新する
+svn up
+chmod -R 0777 log public_file template tmp
+

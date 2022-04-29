@@ -1,0 +1,96 @@
+alter table user ADD UNIQUE (spgv_user_id);
+[ins]:1944
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 1944\G
+         user_id: 1944
+user_mailaddress: the.rising.suns.xxx@docomo.ne.jp
+      user_point: 140
+     user_status: 2
+    spgv_user_id: 20
+
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'the.rising.suns.xxx@docomo.ne.jp'\G
+empty
+         user_id: 2062
+user_mailaddress: the.rising.suns.xxx@docomo.ne.jp
+      user_point: 140
+     user_status: 1
+    snsv_user_id: 1944
+
+
+[ins]:200
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 200\G
+         user_id: 200
+user_mailaddress: makaheloso@ezweb.ne.jp
+      user_point: 200
+     user_status: 2
+    spgv_user_id: 95
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'makaheloso@ezweb.ne.jp'\G
+empty
+         user_id: 503
+user_mailaddress: makaheloso@ezweb.ne.jp
+      user_point: 200
+     user_status: 1
+    snsv_user_id: 200
+
+
+[ins]:224
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 224\G
+         user_id: 224
+user_mailaddress: 3-9.fey@ezweb.ne.jp
+      user_point: 200
+     user_status: 2
+    spgv_user_id: 118
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = '3-9.fey@ezweb.ne.jp'\G
+empty
+         user_id: 527
+user_mailaddress: 3-9.fey@ezweb.ne.jp
+      user_point: 200
+     user_status: 1
+    snsv_user_id: 224
+
+
+[ins]:1940
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 1940\G
+         user_id: 1940
+user_mailaddress: shyokunin_damashii@ezweb.ne.jp
+      user_point: 0
+     user_status: 1
+    spgv_user_id: 16
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'shyokunin_damashii@ezweb.ne.jp'\G
+empty
+user_mailaddress: shyokunin_damashii@ezweb.ne.jp
+      user_point: 0
+     user_status: 1
+    snsv_user_id: 1940
+
+
+[ins]:1941
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 1941\G
+         user_id: 1941
+user_mailaddress: love..peace1218@docomo.ne.jp
+      user_point: 130
+     user_status: 2
+    spgv_user_id: 17
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'love..peace1218@docomo.ne.jp'\G
+empty
+         user_id: 2060
+user_mailaddress: love..peace1218@docomo.ne.jp
+      user_point: 130
+     user_status: 1
+    snsv_user_id: 1941
+
+
+[ins]:1943
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 1943\G
+         user_id: 1943
+user_mailaddress: saomama-620@ezweb.ne.jp
+      user_point: 190
+     user_status: 2
+    spgv_user_id: 19
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'saomama-620@ezweb.ne.jp'\G
+empty
+         user_id: 2061
+user_mailaddress: saomama-620@ezweb.ne.jp
+      user_point: 190
+     user_status: 1
+    snsv_user_id: 1943
+

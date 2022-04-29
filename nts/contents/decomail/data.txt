@@ -1,0 +1,73 @@
+mochi_word02_s1.gif	mochi_word02_s2.gif	mochi_word02.dmt	mochi_word02.khm	mochi_word02.hmt	がんばれ	もちまる	1
+rapi_love20_s1.gif	rapi_love20_s2.gif	rapi_love20.dmt	rapi_love20.khm	rapi_love20.hmt	大好きにゃん☆	ﾗﾋﾟｽ&ｽﾋﾟｶ	1
+alice_thanks08_s1.gif	alice_thanks08_s2.gif	alice_thanks08.dmt	alice_thanks08.khm	alice_thanks08.hmt	有難う	万華鏡の国のありす	1
+niji_notice11_s1.gif	niji_notice11_s2.gif	niji_notice11.dmt	niji_notice11.khm	niji_notice11.hmt	ﾒｱﾄﾞ変わりました	にじうさぎ	1
+dou_thanks08_s1.gif	dou_thanks08_s2.gif	dou_thanks08.dmt	dou_thanks08.khm	dou_thanks08.hmt	ありがとう	ﾄﾞｰﾅﾂ･ﾌﾟﾗﾈｯﾄ	1
+mochi_say02_s1.gif	mochi_say02_s2.gif	mochi_say02.dmt	mochi_say02.khm	mochi_say02.hmt	おはよう	もちまる	1
+rapi_congra03b_s1.gif	rapi_congra03b_s2.gif	rapi_congra03b.dmt	rapi_congra03b.khm	rapi_congra03b.hmt	お幸せに	ﾗﾋﾟｽ&ｽﾋﾟｶ	1
+mochi_word08_s1.gif	mochi_word08_s2.gif	mochi_word08.dmt	mochi_word08.khm	mochi_word08.hmt	ねむい･･･	もちまる	1
+rapi_leave06_s1.gif	rapi_leave06_s2.gif	rapi_leave06.dmt	rapi_leave06.khm	rapi_leave06.hmt	旅行	ﾗﾋﾟｽ&ｽﾋﾟｶ	1
+dl_leave06_s1.gif	dl_leave06_s2.gif	dl_leave06.dmt	dl_leave06.khm	dl_leave06.hmt	Cool!!	DESIGNERS LINE	1
+bu_angry03_s1.gif	bu_angry03_s2.gif	bu_angry03.dmt	bu_angry03.khm	bu_angry03.hmt	怒るよ!	ぶさね日和	1
+bu_cry08_s1.gif	bu_cry08_s2.gif	bu_cry08.dmt	bu_cry08.khm	bu_cry08.hmt	悲しいよ	ぶさね日和	1
+bu_invite11_s1.gif	bu_invite11_s2.gif	bu_invite11.dmt	bu_invite11.khm	bu_invite11.hmt	行くよ!	ぶさね日和	1
+bu_invite12_s1.gif	bu_invite12_s2.gif	bu_invite12.dmt	bu_invite12.khm	bu_invite12.hmt	お茶しよう	ぶさね日和	1
+bu_notice12_s1.gif	bu_notice12_s2.gif	bu_notice12.dmt	bu_notice12.khm	bu_notice12.hmt	電話変わりました	ぶさね日和	1
+swe_03_s.gif	swe_03.gif	swe_03.gif	swe_03.gif	swe_03.gif	ｼｮｰﾄｹｰｷ		2
+swe_08_s.gif	swe_08.gif	swe_08.gif	swe_08.gif	swe_08.gif	ﾌﾟﾁｹｰｷ		2
+swe_12_s.gif	swe_12.gif	swe_12.gif	swe_12.gif	swe_12.gif	どらやき		2
+ls2_03_s.gif	ls2_03.gif	ls2_03.gif	ls2_03.gif	ls2_03.gif	ﾆｺﾆｺ	ﾗﾋﾟｽ&ｽﾋﾟｶ	2
+mm5_03_s.gif	mm5_03.gif	mm5_03.gif	mm5_03.gif	mm5_03.gif	ﾗﾌﾞﾗﾌﾞ	もちまる	2
+kin_07_s.gif	kin_07.gif	kin_07.gif	kin_07.gif	kin_07.gif	ﾋﾟﾝｸきのこ		2
+6hana_i03_s.gif	6hana_i03.gif	6hana_i03.gif	6hana_i03.gif	6hana_i03.gif	Happy		2
+love_l_i18_s.gif	love_l_i18.gif	love_l_i18.gif	love_l_i18.gif	love_l_i18.gif	LOVE		2
+6hana_i13_s.gif	6hana_i13.gif	6hana_i13.gif	6hana_i13.gif	6hana_i13.gif	ﾒﾙﾍﾝの家		2
+duc_12_s.gif	duc_12.gif	duc_12.gif	duc_12.gif	duc_12.gif	黒ｱﾋﾙ		2
+haha_i01_s.gif	haha_i01.gif	haha_i01.gif	haha_i01.gif	haha_i01.gif	ありがとう		2
+hukidasi_i58_s.gif	hukidasi_i58.gif	hukidasi_i58.gif	hukidasi_i58.gif	hukidasi_i58.gif	あそぼ		2
+love_08_s.gif	love_08.gif	love_08.gif	love_08.gif	love_08.gif	ﾊｰﾄ		2
+friend_i01_s.gif	friend_i01.gif	friend_i01.gif	friend_i01.gif	friend_i01.gif	ともだち		2
+friend_i02_s.gif	friend_i02.gif	friend_i02.gif	friend_i02.gif	friend_i02.gif	よろしく		2
+friend_i05_s.gif	friend_i05.gif	friend_i05.gif	friend_i05.gif	friend_i05.gif	友達		2
+friend_i07_s.gif	friend_i07.gif	friend_i07.gif	friend_i07.gif	friend_i07.gif	ﾒｰﾙしてﾈ		2
+diet_i03_s.gif	diet_i03.gif	diet_i03.gif	diet_i03.gif	diet_i03.gif	ごはん		2
+diet_i04_s.gif	diet_i04.gif	diet_i04.gif	diet_i04.gif	diet_i04.gif	食事		2
+diet_i09_s.gif	diet_i09.gif	diet_i09.gif	diet_i09.gif	diet_i09.gif	焼肉		2
+diet_i11_s.gif	diet_i11.gif	diet_i11.gif	diet_i11.gif	diet_i11.gif	ｳｫｰｷﾝｸﾞ		2
+kafun_i02_s.gif	kafun_i02.gif	kafun_i02.gif	kafun_i02.gif	kafun_i02.gif	杉		2
+kafun_i03_s.gif	kafun_i03.gif	kafun_i03.gif	kafun_i03.gif	kafun_i03.gif	ﾊｯｸｼｮﾝ		2
+kafun_i04_s.gif	kafun_i04.gif	kafun_i04.gif	kafun_i04.gif	kafun_i04.gif	ﾍｯｸｼｮﾝ		2
+kafun_i05_s.gif	kafun_i05.gif	kafun_i05.gif	kafun_i05.gif	kafun_i05.gif	ﾏｽｸ		2
+nurse_reply02_s.gif	nurse_reply02.gif	nurse_reply02.gif	nurse_reply02.gif	nurse_reply02.gif	NO	CURE CURE NURSE	3
+nurse_reply01_s.gif	nurse_reply01.gif	nurse_reply01.gif	nurse_reply01.gif	nurse_reply01.gif	OK	CURE CURE NURSE	3
+seijin_s03_s.gif	seijin_s03.gif	seijin_s03.gif	seijin_s03.gif	seijin_s03.gif	かんぱ〜い!		3
+natu_yasumi_s01_s.gif	natu_yasumi_s01.gif	natu_yasumi_s01.gif	natu_yasumi_s01.gif	natu_yasumi_s01.gif	ｱｲｽ食べたい!!		3
+sexy_s02_s.gif	sexy_s02.gif	sexy_s02.gif	sexy_s02.gif	sexy_s02.gif	chu!		3
+syukudai_s01_s.gif	syukudai_s01.gif	syukudai_s01.gif	syukudai_s01.gif	syukudai_s01.gif	たいへんよくできました		3
+valen_s02_s.gif	valen_s02.gif	valen_s02.gif	valen_s02.gif	valen_s02.gif	LOVE		3
+mochi_mail01_s.gif	mochi_mail01.gif	mochi_mail01.gif	mochi_mail01.gif	mochi_mail01.gif	送信	もちまる	3
+mochi_mail02_s.gif	mochi_mail02.gif	mochi_mail02.gif	mochi_mail02.gif	mochi_mail02.gif	受信	もちまる	3
+mochi_nakama_s03_s.gif	mochi_nakama_s03.gif	mochi_nakama_s03.gif	mochi_nakama_s03.gif	mochi_nakama_s03.gif	ﾊﾞﾗﾝｽいいでしょ?	もちまる	3
+mochi_say02_s.gif	mochi_say02.gif	mochi_say02.gif	mochi_say02.gif	mochi_say02.gif	元気?	もちまる	3
+mochi_say03_s.gif	mochi_say03.gif	mochi_say03.gif	mochi_say03.gif	mochi_say03.gif	おつかれさま	もちまる	3
+alice_meal04_s.gif	alice_meal04.gif	alice_meal04.gif	alice_meal04.gif	alice_meal04.gif	満腹〜	万華鏡の国のありす	3
+alice_reply01_s.gif	alice_reply01.gif	alice_reply01.gif	alice_reply01.gif	alice_reply01.gif	OK	万華鏡の国のありす	3
+alice_reply02_s.gif	alice_reply02.gif	alice_reply02.gif	alice_reply02.gif	alice_reply02.gif	NO	万華鏡の国のありす	3
+alice_say01_s.gif	alice_say01.gif	alice_say01.gif	alice_say01.gif	alice_say01.gif	お疲れ様	万華鏡の国のありす	3
+alice_say04_s.gif	alice_say04.gif	alice_say04.gif	alice_say04.gif	alice_say04.gif	遅れます	万華鏡の国のありす	3
+ascii06_03a_s.gif	ascii06_03a.gif	ascii06_03a.gif	ascii06_03a.gif	ascii06_03a.gif	仲良くしてちょ☆		4
+ascii05_03a_s.gif	ascii05_03a.gif	ascii05_03a.gif	ascii05_03a.gif	ascii05_03a.gif	むきｰ		4
+ascii06_01a_s.gif	ascii06_01a.gif	ascii06_01a.gif	ascii06_01a.gif	ascii06_01a.gif	ﾄﾓﾀﾞﾁｰ		4
+ascii08_01a_s.gif	ascii08_01a.gif	ascii08_01a.gif	ascii08_01a.gif	ascii08_01a.gif	なんのことっすか〜?		4
+ascii08_03a_s.gif	ascii08_03a.gif	ascii08_03a.gif	ascii08_03a.gif	ascii08_03a.gif	･･･?		4
+ascii09_02a_s.gif	ascii09_02a.gif	ascii09_02a.gif	ascii09_02a.gif	ascii09_02a.gif	ﾗﾝﾗﾝ♪		4
+ascii10_02a_s.gif	ascii10_02a.gif	ascii10_02a.gif	ascii10_02a.gif	ascii10_02a.gif	ぎょおお!		4
+ascii92_02a_s.gif	ascii92_02a.gif	ascii92_02a.gif	ascii92_02a.gif	ascii92_02a.gif	ｵ〜ﾒ〜ﾃﾞ〜ﾄ〜		4
+ascii93_04a_s.gif	ascii93_04a.gif	ascii93_04a.gif	ascii93_04a.gif	ascii93_04a.gif	負けるな〜☆		4
+ascii93_05_s.gif	ascii93_05.gif	ascii93_05.gif	ascii93_05.gif	ascii93_05.gif	よろしくお願いします		4
+ascii96_01_s.gif	ascii96_01.gif	ascii96_01.gif	ascii96_01.gif	ascii96_01.gif	なかよち		4
+ascii96_02_s.gif	ascii96_02.gif	ascii96_02.gif	ascii96_02.gif	ascii96_02.gif	紹介しますっ		4
+ascii95_01_s.gif	ascii95_01.gif	ascii95_01.gif	ascii95_01.gif	ascii95_01.gif	ﾀﾞｲｴｯﾄのために		4
+ascii95_02_s.gif	ascii95_02.gif	ascii95_02.gif	ascii95_02.gif	ascii95_02.gif	肥えた?		4
+ascii94_02_s.gif	ascii94_02.gif	ascii94_02.gif	ascii94_02.gif	ascii94_02.gif	へくちょ!!		4
+ascii94_03_s.gif	ascii94_03.gif	ascii94_03.gif	ascii94_03.gif	ascii94_03.gif	くしょん!		4

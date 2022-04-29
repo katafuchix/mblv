@@ -1,0 +1,86 @@
+<?php
+#====================================================================================================
+# $Id: prefilter.emojiDecordFilter.php,v 1.2 2006/10/14 09:39:09 matsui Exp $
+# KEMP Smarty-Plugin Prefilter ŠG•¶ŽšSJIS¨•¶ŽšŽQÆƒtƒBƒ‹ƒ^
+# 2006/09/21 matsui@ke-tai.org
+#====================================================================================================
+# ‹@”\F
+# ŠG•¶ŽšSJIS¨•¶ŽšŽQÆ‚¨‚æ‚ÑSJIS10i¨Unicode‚Ì•ÏŠ·‚ðs‚¤
+#====================================================================================================
+# C³—š—ðF
+# 2006/10/05 “à•”ƒR[ƒh‚Æ‚µ‚ÄUnicode‚ðŽg‚¤‚æ‚¤‚É•ÏXAŒë•ÏŠ·–hŽ~‚Ì‚½‚ßŠG•¶ŽšˆÈŠO‚Ì•ÏŠ·‚ðs‚í‚È‚¢‚æ‚¤‚ÉC³
+# 
+#====================================================================================================
+
+/**
+ * ŠG•¶ŽšSJIS¨•¶ŽšŽQÆƒtƒBƒ‹ƒ^
+ * @param	string	$tpl_output		o—Í“à—e
+ * @return	string					ƒRƒ“ƒo[ƒgÏ‚Ý‚Ìo—Í“à—e
+ */
+function smarty_prefilter_emojiDecordFilter($tpl_output)
+{
+	// SJISŒ`Ž®‚ÌŠG•¶Žš@¨@UnicodeŒ`Ž®@‚É•ÏŠ·
+	// [ŽQl: http://specters.net/cgipon/labo/it_emoji.html]
+	$sjis  = '[\x81-\x9F\xE0-\xF7\xFA-\xFC][\x40-\x7E\x80-\xFC]|[\x00-\x7F]|[\xA1-\xDF]';
+	$emoji = '[\xF8\xF9][\x40-\x7E\x80-\xFC]';
+	$pattern = "/\G((?:$sjis)*)(?:($emoji))/";
+	
+	// ŠG•¶Žš‚ðŒŸõ
+	preg_match_all($pattern, $tpl_output, $arr);		// $arr[2]‚É‘ÎÛŠG•¶Žš‚ªŠi”[‚³‚ê‚é
+	
+	// ŠG•¶Žš‚ð’uŠ·
+	$converted = $tpl_output;
+	mb_internal_encoding('SJIS');
+	mb_regex_encoding('SJIS');
+	foreach($arr[2] as $value) {
+		$emoji_cd = unpack("C*", $value);
+		$hex =  dechex($emoji_cd[1]) . dechex($emoji_cd[2]);
+		$dec = hexdec($hex);
+		if (63647 <= $dec AND $dec <= 63740) {
+			// ŠG•¶ŽšNo.1 ` No.94
+			$dec = $dec - 4705;
+		} elseif (63872 <= $dec AND $dec <= 63996) {
+			// ŠG•¶ŽšNo.118 ` No.166AŠg1`Šg76
+			$dec = $dec - 4773;
+		} elseif ((63808 <= $dec AND $dec <= 63817) OR (63824 <= $dec AND $dec <= 63826) OR (63829 <= $dec AND $dec <= 63831) OR (63835 <= $dec AND $dec <= 63838) OR (63858 <= $dec AND $dec <= 63870)) {
+			// ŠG•¶ŽšNo.95 ` No.117ANo.167 ` No.176
+			$dec = $dec - 4772;
+		} else {
+			continue;
+		}
+		$replacement = '&#x' . strtoupper(dechex($dec)) . ';';		// Unicode‚Åo—Í
+		$converted = mb_ereg_replace($value, $replacement, $converted);
+	}
+	
+	
+	// &#[10i];Œ`Ž®@¨@UnicodeŒ`Ž®@‚É•ÏŠ·
+	$pattern = "/&#(63\d{3});/";
+	preg_match_all($pattern, $tpl_output, $arr);		// $arr[0]‚É‘ÎÛŠG•¶Žš‚ªŠi”[‚³‚ê‚é
+	
+	// ŠG•¶Žš‚É’uŠ·
+	$rep_arr = array();
+	foreach($arr[0] as $value) {
+		$dec = substr($value, 2, 5);
+		if (63647 <= $dec AND $dec <= 63740) {
+			// ŠG•¶ŽšNo.1 ` No.94
+			$dec = $dec - 4705;
+		} elseif (63872 <= $dec AND $dec <= 63996) {
+			// ŠG•¶ŽšNo.118 ` No.166AŠg1`Šg76
+			$dec = $dec - 4773;
+		} elseif ((63808 <= $dec AND $dec <= 63817) OR (63824 <= $dec AND $dec <= 63826) OR (63829 <= $dec AND $dec <= 63831) OR (63835 <= $dec AND $dec <= 63838) OR (63858 <= $dec AND $dec <= 63870)) {
+			// ŠG•¶ŽšNo.95 ` No.117ANo.167 ` No.176
+			$dec = $dec - 4772;
+		} else {
+			continue;
+		}
+		$rep_arr[$value] = '&#x' . strtoupper(dechex($dec)) . ';';		// Unicode‚Åo—Í
+	}
+	
+	$converted = strtr($converted, $rep_arr);
+	
+	
+	// o—Í“à—e‚ð•Ô‚·
+	return $converted;
+}
+
+?>

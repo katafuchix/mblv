@@ -1,0 +1,73 @@
+@charset "Shift_JIS";
+
+.menu1 a{top:8;left:245;background:url(../img/s_menu1.gif) no-repeat;}
+.menu2 a{top:8;left:340;background:url(../img/s_menu2.gif) no-repeat;}
+.menu3 a{top:8;left:435;background:url(../img/s_menu3.gif) no-repeat;}
+.menu4 a{top:8;left:530;background:url(../img/s_menu5.gif) no-repeat;}
+.menu5 a{top:8;left:625;background:url(../img/s_menu7.gif) no-repeat;}
+.menu6 a{top:8;left:720;background:url(../img/s_menu8.gif) no-repeat;}
+.menu7 a{top:8;left:815;background:url(../img/s_menu9.gif) no-repeat;}
+.menu8 a{top:8;left:910;background:url(../img/s_menu6.gif) no-repeat;}
+
+#mainc h2{
+	background:url(../img/hx_sns.gif)  center left no-repeat !important;
+}
+
+#sidec .side_menu li a{
+	background:url(../common/img/list3.gif) 3px center no-repeat;
+}
+
+a{
+	color:#8A4CCC;
+}
+
+.side_menu li a:hover{
+	color:#8A4CCC;
+}
+
+div.navi_children a:hover {
+	background:#8A4CCC;
+	color:#fff;
+}
+
+.active {
+	background:#00CCCC;
+}
+
+.disable {
+	background:#555555;
+	color:#FFFFFF;
+}
+
+.nonchecked {
+	color:#FF0000;
+}
+
+.checked {
+	color:#008000;
+}
+
+.checkedrow {
+	background:#FFFFD5;
+}
+
+.purple{
+	color:#8a4ccc;
+}
+
+textarea {
+	font-size: small;
+}
+
+div.progress-container {
+	border: 1px solid #ccc;
+	width: 600px;
+	margin: 2px 5px 2px 0;
+	padding: 1px;
+	float: left;
+	background: white;
+}
+
+div.progress-container > div {
+	height:12px
+}

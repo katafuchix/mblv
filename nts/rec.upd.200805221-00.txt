@@ -1,0 +1,110 @@
+[upd]:159
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 159\G
+         user_id: 159
+user_mailaddress: takamitomio.0423807758@docomo.ne.jp
+      user_point: 210
+     user_status: 2
+    spgv_user_id: 63
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'takamitomio.0423807758@docomo.ne.jp'\G
+         user_id: 371
+user_mailaddress: takamitomio.0423807758@docomo.ne.jp
+      user_point: 100
+     user_status: 2
+    snsv_user_id: 2348
+update napatownec.user set user_point = 210 where user_id = 371;
+         user_id: 371
+user_mailaddress: takamitomio.0423807758@docomo.ne.jp
+      user_point: 210
+     user_status: 2
+    snsv_user_id: 2348
+¥Œã”¼í
+
+[upd]:193
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 193\G
+         user_id: 193
+user_mailaddress: kz0413@ezweb.ne.jp
+      user_point: 130
+     user_status: 2
+    spgv_user_id: 89
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'kz0413@ezweb.ne.jp'\G
+         user_id: 305
+user_mailaddress: kz0413@ezweb.ne.jp
+      user_point: 0
+     user_status: 2
+    snsv_user_id: 2270
+update napatownec.user set user_point = 130 where user_id = 305;
+         user_id: 305
+user_mailaddress: kz0413@ezweb.ne.jp
+      user_point: 130
+     user_status: 2
+    snsv_user_id: 2270
+¥Œã”¼í
+
+
+[upd]:1741
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 1741\G
+         user_id: 1741
+user_mailaddress: genesis-galaxy@ezweb.ne.jp
+      user_point: 300
+     user_status: 2
+    spgv_user_id: 6
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'genesis-galaxy@ezweb.ne.jp'\G
+         user_id: 379
+user_mailaddress: genesis-galaxy@ezweb.ne.jp
+      user_point: 100
+     user_status: 2
+    snsv_user_id: 2360
+update napatownec.user set user_point = 300 where user_id = 379;
+         user_id: 379
+user_mailaddress: genesis-galaxy@ezweb.ne.jp
+      user_point: 300
+     user_status: 2
+    snsv_user_id: 2360
+¥Œã”¼í
+
+
+[upd]:1947
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 1947\G
+         user_id: 1947
+user_mailaddress: loving_keisuke.haruki@docomo.ne.jp
+      user_point: 0
+     user_status: 1
+    spgv_user_id: 1
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'loving_keisuke.haruki@docomo.ne.jp'\G
+         user_id: 1
+user_mailaddress: loving_keisuke.haruki@docomo.ne.jp
+      user_point: 0
+     user_status: 1
+    snsv_user_id: 1947
+
+
+[upd]:1948
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 1948\G
+         user_id: 1948
+user_mailaddress: zgmf-x10a_freedom.1127.1004@docomo.ne.jp
+      user_point: 190
+     user_status: 2
+    spgv_user_id: 2
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'zgmf-x10a_freedom.1127.1004@docomo.ne.jp'\G
+         user_id: 2
+user_mailaddress: zgmf-x10a_freedom.1127.1004@docomo.ne.jp
+      user_point: 190
+     user_status: 1
+    snsv_user_id: 1948
+
+
+[upd]:1972
+select user_id,user_mailaddress,user_point,user_status,spgv_user_id from user where user_id = 1972\G
+         user_id: 1972
+user_mailaddress: cos_no_seichi@docomo.ne.jp
+      user_point: 200
+     user_status: 2
+    spgv_user_id: 32
+select user_id,user_mailaddress,user_point,user_status,snsv_user_id from napatownec.user where user_mailaddress = 'cos_no_seichi@docomo.ne.jp'\G
+         user_id: 32
+user_mailaddress: cos_no_seichi@docomo.ne.jp
+      user_point: 55
+     user_status: 1
+    snsv_user_id: 1972
+
+

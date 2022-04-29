@@ -1,0 +1,15 @@
+delete from napatownec.user where user_mailaddress = 'tvp703i@docomo.ne.jp';
+delete from napatownsns.user where user_mailaddress = 'tvp703i@docomo.ne.jp';
+
+select * from napatownec.user where user_mailaddress = 'tvp703i@docomo.ne.jp'\G
+select * from napatownsns.user where user_mailaddress = 'tvp703i@docomo.ne.jp'\G
+
+update napatownec.user set user_status = 2 where user_mailaddress = 'tvp703i@docomo.ne.jp';
+update napatownsns.user set user_status = 2 where user_mailaddress = 'tvp703i@docomo.ne.jp';
+
+delete from napatownsns.user_hist where user_mailaddress = 'tvp703i@docomo.ne.jp';
+
+select * from napatownsns.invite where to_user_mailaddress = 'tvp703i@docomo.ne.jp'\G
+
+delete from napatownsns.invite where to_user_mailaddress = 'tvp703i@docomo.ne.jp'\G
+

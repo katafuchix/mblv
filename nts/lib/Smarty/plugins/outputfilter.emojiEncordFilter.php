@@ -1,0 +1,68 @@
+<?php
+#====================================================================================================
+# $Id: outputfilter.emojiEncordFilter.php,v 1.2 2006/10/14 09:39:09 matsui Exp $
+# KEMP Smarty-Plugin Outputfilter •¶ŽšŽQÆ¨SJISƒtƒBƒ‹ƒ^
+# 2006/09/21 matsui@ke-tai.org
+#====================================================================================================
+# ‹@”\F
+# iƒ‚[ƒhŠG•¶Žš‚ð•¶ŽšŽQÆŒ`Ž®‚©‚çSJISŒ`Ž®‚É•ÔM‚·‚é
+#====================================================================================================
+# C³—š—ðF
+# 2006/10/05 Unicode‚É‘Î‰žAŒë•ÏŠ·–hŽ~‚Ì‚½‚ßŠG•¶ŽšˆÈŠO‚Ì•ÏŠ·‚ðs‚í‚È‚¢‚æ‚¤‚ÉC³
+# 
+#====================================================================================================
+
+/**
+ * •¶ŽšŽQÆ¨SJISƒtƒBƒ‹ƒ^
+ * @param	string	$tpl_output		o—Í“à—e
+ * @return	string					ƒRƒ“ƒo[ƒgÏ‚Ý‚Ìo—Í“à—e
+ */
+function smarty_outputfilter_emojiEncordFilter($tpl_output)
+{
+	$rep_arr = array();
+	
+	// iƒ‚[ƒhŠî–{ŠG•¶Žš(SJIS &#[10i];)‚ðŒŸõ
+	$pattern = "/&#(63\d{3});/";
+	preg_match_all($pattern, $tpl_output, $arr);		// $arr[0]‚É‘ÎÛŠG•¶Žš‚ªŠi”[‚³‚ê‚é
+	
+	// ŠG•¶Žš‚É’uŠ·
+	$converted = $tpl_output;
+	foreach($arr[0] as $value) {
+		$dec = substr($value, 2, 5);
+		if ((63647 <= $dec AND $dec <= 63740) OR (63808 <= $dec AND $dec <= 63817) OR (63824 <= $dec AND $dec <= 63826) OR (63829 <= $dec AND $dec <= 63831) OR (63835 <= $dec AND $dec <= 63838) OR (63858 <= $dec AND $dec <= 63870) OR (63872 <= $dec AND $dec <= 63920)) {
+			$rep_arr[$value] = pack('n', $dec);
+		}
+	}
+	
+	
+	// iƒ‚[ƒhŠg’£ŠG•¶Žš(UnicodeŒ`Ž®)‚ðŒŸõ
+	$pattern = "/&#x(E[67][0-9A-F]{2});/";
+	preg_match_all($pattern, $tpl_output, $arr);		// $arr[0]‚É‘ÎÛŠG•¶Žš‚ªŠi”[‚³‚ê‚é
+	
+	// ŠG•¶Žš‚É’uŠ·
+	foreach($arr[0] as $value) {
+		$hex = substr($value, 3, 4);
+		$dec = hexdec($hex);
+		if (58942 <= $dec AND $dec <= 59035) {
+			// ŠG•¶ŽšNo.1 ` No.94
+			$dec = $dec + 4705;
+		} elseif (59099 <= $dec AND $dec <= 59223) {
+			// ŠG•¶ŽšNo.118 ` No.166AŠg1`Šg76
+			$dec = $dec + 4773;
+		} elseif ((59036 <= $dec AND $dec <= 59045) OR (59052 <= $dec AND $dec <= 59054) OR (59057 <= $dec AND $dec <= 59059) OR (59063 <= $dec AND $dec <= 59066) OR (59086 <= $dec AND $dec <= 59098)) {
+			// ŠG•¶ŽšNo.95 ` No.117ANo.167 ` No.176
+			$dec = $dec + 4772;
+		} else {
+			continue;
+		}
+		$rep_arr[$value] = pack('n', $dec);
+	}
+	
+	// ’uŠ·ˆ—
+	$converted = strtr($converted, $rep_arr);
+	
+	// o—Í“à—e‚ð•Ô‚·
+	return $converted;
+}
+
+?>

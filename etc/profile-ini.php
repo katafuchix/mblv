@@ -1,0 +1,445 @@
+<?php
+$profile = array(
+	/* =============================================
+	// ¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ëÀßÄê
+	============================================= */
+	// Ç¯ÎðÀ©¸Â
+	//'user_age_min' => 20,
+	'user_age_min' => 0,// Ç¯ÎðÀ©¸Â¤Ê¤·
+	
+	// ¸ø³«/Èó¸ø³«
+	'public' => array(
+		true	=> array('name' => '¸ø³«'),
+		false	=> array('name' => 'Èó¸ø³«'),
+	),
+	
+	// [¥Þ¥¹¥¿]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ëÀßÄê¹àÌÜ
+	// ´ÉÍý²èÌÌ¤Ç¤Î¸¡º÷¤Ê¤É¤Î¥Þ¥¹¥¿¡¼¤È¤Ê¤ë
+	'profile' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+		'user_nickname'					=> true,// ¡ü¸ÇÄê
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> true,// ¡ü¸ÇÄê
+		// À­ÊÌ
+		'user_sex'						=> true,// ¡ü
+//		'user_sex'						=> false,// ¡ß
+		// ÃÂÀ¸Æü
+		'user_birth_date'				=> true,// ¡ü
+//		'user_birth_date'				=> false,// ¡ß
+		// ÃÏ°è¡ÊÅÔÆ»ÉÜ¸©¡Ë
+		'prefecture_id'					=> true,// ¡ü
+//		'prefecture_id'					=> false,// ¡ß
+		// ÃÏ°è¡Ê½»½ê¡Ë
+		'user_address'					=> true,// ¡ü
+//		'user_address'					=> false,// ¡ß
+		// ÃÏ°è¡Ê·úÊªÌ¾¡Ë
+		'user_address_building'			=> true,// ¡ü
+//		'user_address_building'			=> false,// ¡ß
+		// ·ì±Õ·¿
+		'user_blood_type'				=> true,// ¡ü
+//		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+		'job_family_id'					=> true,// ¡ü
+//		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+		'business_category_id'			=> true,// ¡ü
+//		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+		'user_is_married'				=> true,// ¡ü
+//		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+		'user_has_children'				=> true,// ¡ü
+//		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+		'work_location_prefecture_id'	=> true,// ¡ü
+//		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+		'user_hobby'					=> true,// ¡ü
+//		'user_hobby'					=> false,// ¡ß
+		// URL
+		'user_url'						=> true,// ¡ü
+//		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+		'user_introduction'				=> true,// ¡ü
+//		'user_introduction'				=> false,// ¡ß
+	),
+	// [¥Þ¥¹¥¿]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ëÍ×µá¹àÌÜ
+	'profile_required' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+		'user_nickname'					=> true,// ¡ü¸ÇÄê
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> true,// ¡ü¸ÇÄê
+		// À­ÊÌ
+//		'user_sex'						=> true,// ¡ü
+		'user_sex'						=> false,// ¡ß
+		// ÃÂÀ¸Æü
+//		'user_birth_date'				=> true,// ¡ü
+		'user_birth_date'				=> false,// ¡ß
+		// ÃÏ°è¡ÊÅÔÆ»ÉÜ¸©¡Ë
+//		'prefecture_id'					=> true,// ¡ü
+		'prefecture_id'					=> false,// ¡ß
+		// ÃÏ°è¡Ê½»½ê¡Ë
+//		'user_address'					=> true,// ¡ü
+		'user_address'					=> false,// ¡ß
+		// ÃÏ°è¡Ê·úÊªÌ¾¡Ë
+//		'user_address_building'			=> true,// ¡ü
+		'user_address_building'			=> false,// ¡ß
+		// ·ì±Õ·¿
+//		'user_blood_type'				=> true,// ¡ü
+		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+//		'job_family_id'					=> true,// ¡ü
+		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+//		'business_category_id'			=> true,// ¡ü
+		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+//		'user_is_married'				=> true,// ¡ü
+		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+//		'user_has_children'				=> true,// ¡ü
+		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+//		'work_location_prefecture_id'	=> true,// ¡ü
+		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+//		'user_hobby'					=> true,// ¡ü
+		'user_hobby'					=> false,// ¡ß
+		// URL
+//		'user_url'						=> true,// ¡ü
+		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+//		'user_introduction'				=> true,// ¡ü
+		'user_introduction'				=> false,// ¡ß
+	),
+	// [¥Þ¥¹¥¿]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ë¸ø³«¹àÌÜ
+	// ¸µ¡¹Èó¸ø³«¥Á¥§¥Ã¥¯¥Ü¥Ã¥¯¥¹¤¬É½¼¨¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¡¢¤³¤Î¥Þ¥¹¥¿¡¼¤ÎÀßÄê¤¬Í­¸ú¤È¤Ê¤ë
+	'profile_public' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+//		'user_nickname'					=> true,// ¡ü¸ÇÄê
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> false,// ¡ß¸ÇÄê
+		// À­ÊÌ
+		'user_sex'						=> true,// ¡ü
+//		'user_sex'						=> false,// ¡ß
+		// ÃÂÀ¸Æü
+//		'user_birth_date'				=> true,// ¡ü
+		'user_birth_date'				=> false,// ¡ß
+		// ÃÏ°è
+//		'user_address'					=> true,// ¡ü
+		'user_address'					=> false,// ¡ß
+		// ·ì±Õ·¿
+//		'user_blood_type'				=> true,// ¡ü
+		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+//		'job_family_id'					=> true,// ¡ü
+		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+//		'business_category_id'			=> true,// ¡ü
+		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+//		'user_is_married'				=> true,// ¡ü
+		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+//		'user_has_children'				=> true,// ¡ü
+		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+//		'work_location_prefecture_id'	=> true,// ¡ü
+		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+//		'user_hobby'					=> true,// ¡ü
+		'user_hobby'					=> false,// ¡ß
+		// URL
+//		'user_url'						=> true,// ¡ü
+		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+//		'user_introduction'				=> true,// ¡ü
+		'user_introduction'				=> false,// ¡ß
+	),
+	// [ÅÐÏ¿ÍÑ]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ëÀßÄê¹àÌÜ
+	// ²ñ°÷ÅÐÏ¿»þ¤ËÉ½¼¨¤¹¤ëÆþÎÏ¥Õ¥©¡¼¥à
+	'profile_regist' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+		'user_nickname'					=> true,// ¡ü¸ÇÄê
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> true,// ¡ü¸ÇÄê
+		// À­ÊÌ
+		'user_sex'						=> true,// ¡ü
+//		'user_sex'						=> false,// ¡ü
+		// ÃÂÀ¸Æü
+		'user_birth_date'				=> true,// ¡ü
+//		'user_birth_date'				=> false,// ¡ü
+		// ÃÏ°è¡ÊÅÔÆ»ÉÜ¸©¡Ë
+		'prefecture_id'					=> true,// ¡ü
+//		'prefecture_id'					=> false,// ¡ü
+		// ÃÏ°è¡Ê½»½ê¡Ë
+//		'user_address'					=> true,// ¡ü
+		'user_address'					=> false,// ¡ß
+		// ÃÏ°è¡Ê·úÊªÌ¾¡Ë
+//		'user_address_building'			=> true,// ¡ü
+		'user_address_building'			=> false,// ¡ß
+		// ·ì±Õ·¿
+//		'user_blood_type'				=> true,// ¡ü
+		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+//		'job_family_id'					=> true,// ¡ü
+		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+//		'business_category_id'			=> true,// ¡ü
+		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+//		'user_is_married'				=> true,// ¡ü
+		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+//		'user_has_children'				=> true,// ¡ü
+		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+//		'work_location_prefecture_id'	=> true,// ¡ü
+		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+//		'user_hobby'					=> true,// ¡ü
+		'user_hobby'					=> false,// ¡ß
+		// URL
+//		'user_url'						=> true,// ¡ü
+		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+//		'user_introduction'				=> true,// ¡ü
+		'user_introduction'				=> false,// ¡ß
+	),
+	// [ÅÐÏ¿ÍÑ]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ëÀßÄê¹àÌÜ
+	// ²ñ°÷ÅÐÏ¿»þ¤ËÆþÎÏÉ¬¿Ü¤È¤¹¤ë¥Õ¥©¡¼¥à
+	'profile_regist_required' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+		'user_nickname'					=> true,// ¡ü¸ÇÄê
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> true,// ¡ü¸ÇÄê
+		// À­ÊÌ
+		'user_sex'						=> true,// ¡ü¸ÇÄê
+//		'user_sex'						=> false,// ¡ß
+		// ÃÂÀ¸Æü
+//		'user_birth_date'				=> true,// ¡ü
+		'user_birth_date'				=> false,// ¡ß
+		// ÃÏ°è¡ÊÅÔÆ»ÉÜ¸©¡Ë
+		'prefecture_id'					=> true,// ¡ü
+//		'prefecture_id'					=> true,// ¡ß
+		// ÃÏ°è¡Ê½»½ê¡Ë
+//		'user_address'					=> true,// ¡ü
+		'user_address'					=> false,// ¡ß
+		// ÃÏ°è¡Ê·úÊªÌ¾¡Ë
+//		'user_address_building'			=> true,// ¡ü
+		'user_address_building'			=> false,// ¡ß
+		// ·ì±Õ·¿
+//		'user_blood_type'				=> true,// ¡ü
+		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+//		'job_family_id'					=> true,// ¡ü
+		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+//		'business_category_id'			=> true,// ¡ü
+		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+//		'user_is_married'				=> true,// ¡ü
+		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+//		'user_has_children'				=> true,// ¡ü
+		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+//		'work_location_prefecture_id'	=> true,// ¡ü
+		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+//		'user_hobby'					=> true,// ¡ü
+		'user_hobby'					=> false,// ¡ß
+		// URL
+//		'user_url'						=> true,// ¡ü
+		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+//		'user_introduction'				=> true,// ¡ü
+		'user_introduction'				=> false,// ¡ß
+	),
+	// [ÅÐÏ¿ÍÑ]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ë¸ø³«¹àÌÜ
+	// ²ñ°÷ÅÐÏ¿»þ¤ËÉ½¼¨¤µ¤»¤ëÈóÉ½¼¨¥Á¥§¥Ã¥¯¥Ü¥Ã¥¯¥¹
+	'profile_regist_public' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+//		'user_nickname'					=> true,// ¡ü¸ÇÄê
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> false,// ¡ß¸ÇÄê
+		// À­ÊÌ
+//		'user_sex'						=> true,// ¡ü
+		'user_sex'						=> false,// ¡ß
+		// ÃÂÀ¸Æü
+//		'user_birth_date'				=> true,// ¡ü
+		'user_birth_date'				=> false,// ¡ß
+		// ÃÏ°è
+//		'user_address'					=> true,// ¡ü
+		'user_address'					=> false,// ¡ß
+		// ·ì±Õ·¿
+//		'user_blood_type'				=> true,// ¡ü
+		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+//		'job_family_id'					=> true,// ¡ü
+		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+//		'business_category_id'			=> true,// ¡ü
+		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+//		'user_is_married'				=> true,// ¡ü
+		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+//		'user_has_children'				=> true,// ¡ü
+		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+//		'work_location_prefecture_id'	=> true,// ¡ü
+		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+//		'user_hobby'					=> true,// ¡ü
+		'user_hobby'					=> false,// ¡ß
+		// URL
+//		'user_url'						=> true,// ¡ü
+		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+//		'user_introduction'				=> true,// ¡ü
+		'user_introduction'				=> true,// ¡ß
+	),
+	// [ÊÔ½¸ÍÑ]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ëÀßÄê¹àÌÜ
+	// ¥×¥í¥Õ¥£¡¼¥ëÊÔ½¸»þ¤ËÉ½¼¨¤µ¤»¤ëÆþÎÏ¥Õ¥©¡¼¥à
+	'profile_edit' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+		'user_nickname'					=> true,// ¡ü
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> false,// ¡ß¸ÇÄê
+		// À­ÊÌ
+		'user_sex'						=> false,// ¡ß¸ÇÄê
+		// ÃÂÀ¸Æü
+		'user_birth_date'				=> true,// ¡ü
+//		'user_birth_date'				=> false,// ¡ß
+		// ÃÏ°è¡ÊÅÔÆ»ÉÜ¸©¡Ë
+		'prefecture_id'					=> true,// ¡ü
+//		'prefecture_id'					=> false,// ¡ß
+		// ÃÏ°è¡Ê½»½ê¡Ë
+		'user_address'					=> true,// ¡ü
+//		'user_address'					=> false,// ¡ß
+		// ÃÏ°è¡Ê·úÊªÌ¾¡Ë
+		'user_address_building'			=> true,// ¡ü
+//		'user_address_building'			=> false,// ¡ß
+		// ·ì±Õ·¿
+		'user_blood_type'				=> true,// ¡ü
+//		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+		'job_family_id'					=> true,// ¡ü
+//		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+		'business_category_id'			=> true,// ¡ü
+//		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+		'user_is_married'				=> true,// ¡ü
+//		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+		'user_has_children'				=> true,// ¡ü
+//		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+		'work_location_prefecture_id'	=> true,// ¡ü
+//		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+		'user_hobby'					=> true,// ¡ü
+//		'user_hobby'					=> false,// ¡ß
+		// URL
+		'user_url'						=> true,// ¡ü
+//		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+		'user_introduction'				=> true,// ¡ü
+//		'user_introduction'				=> false,// ¡ß
+	),
+	// [ÊÔ½¸ÍÑ]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ëÍ×µá¹àÌÜ
+	// ¥×¥í¥Õ¥£¡¼¥ëÊÔ½¸»þ¤ËÆþÎÏÉ¬¿Ü¤È¤¹¤ë¥Õ¥©¡¼¥à
+	'profile_edit_required' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+		'user_nickname'					=> true,// ¡ü
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> false,// ¡ß¸ÇÄê
+		// À­ÊÌ
+		'user_sex'						=> false,// ¡ß¸ÇÄê
+		// ÃÂÀ¸Æü
+		'user_birth_date'				=> true,// ¡ü
+//		'user_birth_date'				=> false,// ¡ß
+		// ÃÏ°è¡ÊÅÔÆ»ÉÜ¸©¡Ë
+		'prefecture_id'					=> true,// ¡ü
+//		'prefecture_id'					=> false,// ¡ß
+		// ÃÏ°è¡Ê½»½ê¡Ë
+//		'user_address'					=> true,// ¡ü
+		'user_address'					=> false,// ¡ß
+		// ÃÏ°è¡Ê·úÊªÌ¾¡Ë
+//		'user_address_building'			=> true,// ¡ü
+		'user_address_building'			=> false,// ¡ß
+		// ·ì±Õ·¿
+//		'user_blood_type'				=> true,// ¡ü
+		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+//		'job_family_id'					=> true,// ¡ü
+		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+//		'business_category_id'			=> true,// ¡ü
+		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+//		'user_is_married'				=> true,// ¡ü
+		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+//		'user_has_children'				=> true,// ¡ü
+		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+//		'work_location_prefecture_id'	=> true,// ¡ü
+		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+//		'user_hobby'					=> true,// ¡ü
+		'user_hobby'					=> false,// ¡ß
+		// URL
+//		'user_url'						=> true,// ¡ü
+		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+//		'user_introduction'				=> true,// ¡ü
+		'user_introduction'				=> false,// ¡ß
+	),
+	// [ÊÔ½¸]¥æ¡¼¥¶¥×¥í¥Õ¥£¡¼¥ë¸ø³«¹àÌÜ
+	// ¥×¥í¥Õ¥£¡¼¥ëÊÔ½¸»þ¤ËÉ½¼¨¤µ¤»¤ëÈóÉ½¼¨¥Á¥§¥Ã¥¯¥Ü¥Ã¥¯¥¹
+	'profile_edit_public' => array(
+		// ¥Ë¥Ã¥¯¥Í¡¼¥à
+//		'user_nickname'					=> false,// ¡ß¸ÇÄê
+		// ¥Ñ¥¹¥ï¡¼¥É
+		'user_password'					=> false,// ¡ß¸ÇÄê
+		// À­ÊÌ
+		'user_sex'						=> true,// ¡ü¸ÇÄê
+		// ÃÂÀ¸Æü
+		'user_birth_date'				=> true,// ¡ü
+//		'user_birth_date'				=> false,// ¡ß
+		// ÃÏ°è
+		'user_address'					=> true,// ¡ü
+//		'user_address'					=> false,// ¡ß
+		// ·ì±Õ·¿
+		'user_blood_type'				=> true,// ¡ü
+//		'user_blood_type'				=> false,// ¡ß
+		// ¿¦¼ï
+		'job_family_id'					=> true,// ¡ü
+//		'job_family_id'					=> false,// ¡ß
+		// ¶È¼ï
+		'business_category_id'			=> true,// ¡ü
+//		'business_category_id'			=> false,// ¡ß
+		// ·ëº§
+		'user_is_married'				=> true,// ¡ü
+//		'user_is_married'				=> false,// ¡ß
+		// »Ò¶¡
+		'user_has_children'				=> true,// ¡ü
+//		'user_has_children'				=> false,// ¡ß
+		// ¶ÐÌ³ÃÏ
+		'work_location_prefecture_id'	=> true,// ¡ü
+//		'work_location_prefecture_id'	=> false,// ¡ß
+		// ¼ñÌ£
+		'user_hobby'					=> true,// ¡ü
+//		'user_hobby'					=> false,// ¡ß
+		// URL
+		'user_url'						=> true,// ¡ü
+//		'user_url'						=> false,// ¡ß
+		// ¼«¸Ê¾Ò²ð
+		'user_introduction'				=> true,// ¡ü
+//		'user_introduction'				=> false,// ¡ß
+	),
+);
+?>
